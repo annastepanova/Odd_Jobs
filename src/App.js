@@ -20,6 +20,7 @@ function App() {
         <Route exact path="/services/support" component={Support}/>
         <Route exact path="/register" component={Register}/>
         <Route exact path="/login" component={Login}/>
+        <Route exact path="/results" component={SearchResults} />
       </Switch>
       </BrowserRouter>
     </div>
