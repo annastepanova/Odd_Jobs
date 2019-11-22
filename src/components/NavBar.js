@@ -5,14 +5,14 @@ import '../NavBar.css'
 export default function NavBar() {
   return (
   <nav className="navbar">
-    <NavLink exact to="/"><img className="logo" src="OddJobslogo.png" alt="logo" /></NavLink>
     <ul className="nav-list">
+      <li><NavLink exact to="/"><img className="logo" src="OddJobslogo.png" alt="logo" /></NavLink></li>
       <li><NavLink exact to="/services">Services</NavLink></li>
-      <li><NavLink exact to="/services/support">Support</NavLink></li>
-      <li><NavLink exact to="/contractor_register">Be a Contractor</NavLink></li>
-      <li><NavLink exact to="/register">Login/Register</NavLink></li>
+      <li><NavLink className="link-tabs" exact to="/services/support">Support</NavLink></li>
+      <li><NavLink className="contractor-tab"exact to="/contractor_register">Be a Contractor</NavLink></li>
+      <li><NavLink className="login-tab" exact to="/register">Login/Register</NavLink></li>
       <div className="nav-btn-list">
-      <button className="translate-button">EN/ES</button>
+      <button className="translate-button">EN | ES</button>
       <button className="hire-button">HIRE</button>
       </div>
     </ul>
