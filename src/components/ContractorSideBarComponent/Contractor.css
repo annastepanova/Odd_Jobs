@@ -1,0 +1,63 @@
+.Rob {
+    display: flex;
+   
+    flex-direction: column ;
+    width: 200px;
+    padding: 20px;
+}
+.Rob1 {
+    line-height: 25px;
+    border: solid 2px
+    #302E98;
+    width: 200px;
+    height:180px;
+    border-radius: 8px;
+    font-family: Arial;
+    font-weight: bold;
+    
+    
+}
+.Rob3{
+    border: solid 2px
+    #302E98;
+    width: 200px;
+    height:420px;
+    border-radius: 8px;
+    line-height: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    
+    
+}
+.star {
+    color: #302E98;
+    margin-top: 5px;
+    font-size: 20px;
+}
+
+.category_title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+.category_name {
+    color: #302E98;
+    font-size: 15px;
+    
+}
+.filter-header {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    
+}
+
+
+.suh {
+    display: flex;
+    
+    
+    
+    
+}
+
+
