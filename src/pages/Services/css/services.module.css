@@ -1,0 +1,45 @@
+.services_title{
+color: darkblue;
+font-size: 25px;
+padding: 2%;
+
+}
+
+.all_services_img{ 
+display: flex;
+justify-content:space-around;
+flex-wrap: wrap;
+
+}
+
+
+.Job_img{
+  margin: 0%;
+  border: rgb(125, 125, 129) 1px;
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+  width: 30vw;
+  height: 40vh;
+  margin-top: 25px;
+  
+
+}
+
+
+.Cada_img{
+width: 100%;
+height: 100%;
+}
+
+
+.services_footer{
+margin-top: 100px;
+width: 100vw;
+height: 50px;
+background-color: orange;
+}
+
+.services_footer_text{
+  color: blue;  
+}
