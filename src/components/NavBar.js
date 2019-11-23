@@ -9,7 +9,7 @@ export default function NavBar() {
       <li><NavLink exact to="/services/support">Support</NavLink></li>
       <li><NavLink exact to="/register">Register</NavLink></li>
       <li><NavLink exact to="/login">Login</NavLink></li>
-      <li><NavLink exact to="/results">Map</NavLink></li>
+      <li><NavLink exact to="/results">Map results</NavLink></li>
   
     </ul>
   </nav>

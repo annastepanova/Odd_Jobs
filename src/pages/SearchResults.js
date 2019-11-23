@@ -1,11 +1,14 @@
 import React from 'react'
+import '../map.css'
+import MapContainer from '../components/MapContainer'
 
 const accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ1MTg2ODN9.w_XCtdyOg15wv04DQobxtKBVOyuwwk8HMusWy-CUmCM"
 
 class SearchResults extends React.Component {
   state = {
    addresses: [],
-   coordinates: []
+   coordinates: [],
+   contractors: []
   }
 
 
@@ -20,6 +23,21 @@ class SearchResults extends React.Component {
       .then(data => {
        
        this.setState({ addresses: data })
+      })
+
+  }
+
+  fetchContractor = () => {
+    fetch('http://localhost:3000/contractors',
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+       
+       this.setState({ contractors: data })
       })
 
   }
@@ -42,7 +60,7 @@ class SearchResults extends React.Component {
               lat, lng
             }
             coordArray.push(coordinates)
-            console.log('DID IT WORK???', coordinates)
+            // console.log('DOES IT WORK???', coordinates)
      
           })
          
@@ -55,6 +73,7 @@ class SearchResults extends React.Component {
      
   componentDidMount() {
     this.fetchAddress()
+    this.fetchContractor()
    
   }
       
@@ -63,16 +82,18 @@ render(){
   return(
 
     <div>
-      <button onClick={this.getLocationForAddress}>Hit me!</button>
-      {
-        
-
-        this.state.addresses.map(address => (
-          <div>
-            <h1>{address.street1}</h1>
-          </div> ))
-
-      }
+      
+      <div style={{ position: 'relative', minHeight: '500px', marginTop: '50px', marginLeft: '490px', marginRight: '76px' }}>
+        {
+         
+          <MapContainer
+            coordinates={this.state.coordinates}
+            contractors={this.state.contractors}
+          />
+        }
+      </div>
+      <button onClick={this.getLocationForAddress} className="rectangle-copy-2 search">Search</button>
+    
     </div>
   )
 }
