@@ -7,6 +7,7 @@ import Support from './pages/Support'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import NavBar from './components/NavBar'
+import SearchResults from './pages/SearchResults'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route exact path="/services/support" component={Support}/>
         <Route exact path="/register" component={Register}/>
         <Route exact path="/login" component={Login}/>
+        <Route exact path="/results" component={SearchResults} />
       </Switch>
       </BrowserRouter>
     </div>
