@@ -1,11 +1,12 @@
-.Rob {
+.filter-components {
     display: flex;
    
     flex-direction: column ;
+    margin: 20px;
     width: 200px;
     padding: 20px;
 }
-.Rob1 {
+.rating-box {
     line-height: 25px;
     border: solid 2px
     #302E98;
@@ -14,10 +15,13 @@
     border-radius: 8px;
     font-family: Arial;
     font-weight: bold;
+    margin-bottom:20px;
+    padding: 6px;
     
     
 }
-.Rob3{
+.services-box {
+    padding: 6px;
     border: solid 2px
     #302E98;
     width: 200px;
@@ -38,26 +42,30 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     font-weight: bold;
+    
 }
 .category_name {
+    
+ 
     color: #302E98;
     font-size: 15px;
+    cursor: pointer;
     
+
+    
+}
+.category_name:hover {
+    text-decoration: underline;
 }
 .filter-header {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     font-size: 18px;
+    margin-bottom: 5px;
     
 }
 
 
-.suh {
-    display: flex;
-    
-    
-    
-    
-}
+
 
 

@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../css/services.module.css";
+import { Link } from 'react-router-dom'
 
 class Services extends React.Component {
   state = {
@@ -31,15 +32,15 @@ class Services extends React.Component {
     return (
       <>
         <h1 className={styles.services_title}>All Odd Jobs</h1>
-        <div className={styles.all_services_img}>
+        <Link exact to='/contractors'><div className={styles.all_services_img}>
           {this.state.jobCategoriesImg.jobImages.map((item, i) => (
             <div key={i} className={styles.Job_img}>
-                     <img className={styles.Cada_img} src={item.url} alt={item.title}/>
+              <img className={styles.Cada_img} src={item.url} alt={item.title} />
             </div>
           ))}
-        </div>
+        </div></Link>
         <footer className={styles.services_footer}>
-            <p className={styles.services_footer_text}> Conditions of UsePrivacy 2019, Odd Jobs, Inc. </p>
+          <p className={styles.services_footer_text}> Conditions of UsePrivacy 2019, Odd Jobs, Inc. </p>
         </footer>
       </>
     );
