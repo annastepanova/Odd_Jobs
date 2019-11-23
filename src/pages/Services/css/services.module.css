@@ -1,8 +1,9 @@
 .services_title{
-color: darkblue;
-font-size: 25px;
-padding: 2%;
-
+  font-size: 25px;
+  font-family: Arial;
+  color: #2E3192;
+  line-height: 40px;
+  padding: 15px;
 }
 
 .all_services_img{ 
