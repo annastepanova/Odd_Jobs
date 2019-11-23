@@ -2,7 +2,7 @@ import React from 'react';
 
 import './App.css';
 import Home from './pages/Home'
-import Services from './pages/Services'
+import Services from './pages/Services/components/Services'
 import Support from './pages/Support'
 import Register from './pages/Register'
 import Login from './pages/Login'
