@@ -7,26 +7,33 @@
 .nav-list {
   display: flex;
   align-items: center;
-  border: 1px solid black;
   height: 156px;
   width: 1443px;
   font-size: 20px;
   font-family: Arial;
   justify-content: space-evenly;
+  margin-left: -50px;
+}
+.services-tab {
+  margin-left: -50px;
 }
 
 .link-tabs {
-  margin-left: -80px;
+  margin-left: -110px;
 }
 
 .contractor-tab {
-  margin-left: -90px;
+  margin-left: -150px;
 }
 
 .login-tab {
-  margin-left: -90px;
+  margin-left: -110px;
 }
 
+.nav-btn-list {
+  display: grid;
+  margin-left: 100px;
+}
 
 .translate-button {
   height: 20px;
@@ -37,6 +44,7 @@
   text-align: center;
   color: rgba(48,46,152,0.6);
   border: none;
+  margin-top: 0px;
 }
 
 .hire-button {
@@ -48,6 +56,7 @@
   font-size: 18px;
   line-height: 21px;
   text-align: center;
+  margin-top: 20px;
 }
 
 
