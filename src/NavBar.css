@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  height: 156px;
+  width: 1443px;
+  font-size: 20px;
+  font-family: Arial;
+  justify-content: space-evenly;
+  margin-left: -50px;
+}
+.services-tab {
+  margin-left: -50px;
+}
+
+.link-tabs {
+  margin-left: -110px;
+}
+
+.contractor-tab {
+  margin-left: -150px;
+}
+
+.login-tab {
+  margin-left: -110px;
+}
+
+.nav-btn-list {
+  display: grid;
+  margin-left: 100px;
+}
+
+.translate-button {
+  height: 20px;
+  width: 69px;
+  font-family: Arial;
+  font-size: 16px;
+  line-height: 21px;
+  text-align: center;
+  color: rgba(48,46,152,0.6);
+  border: none;
+  margin-top: 0px;
+}
+
+.hire-button {
+  height: 61px;
+  width: 110px;
+  border-radius: 8px;
+  background-color: #302E98;
+  color: #FFFFFF;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+
+
+
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
