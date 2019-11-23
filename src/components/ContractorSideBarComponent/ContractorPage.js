@@ -16,6 +16,7 @@ class ContractorPage extends Component {
         }
     }
 
+
     componentWillMount() {
         axios.get(`http://localhost:3000/job_categories`,
             {
@@ -48,12 +49,12 @@ class ContractorPage extends Component {
 
     render() {
         return (
-            <div className="Rob" >
+            <div className="filter-components" >
                 <ul>
                     <li className="filter-header">Filters:</li>
 
                 </ul>
-                <ul className="Rob1">
+                <ul className="rating-box">
                     <li>Ratings</li>
                     <div className="star">
                         <li>★</li>
@@ -63,7 +64,7 @@ class ContractorPage extends Component {
                         <li>★★★★★</li>
                     </div>
                 </ul>
-                <ul className="Rob3">
+                <ul className="services-box">
                     <li className="category_title">Services</li>
                     {this.state.categories.map((category, index) => <CategoryItem key={index} category={category} loadContractors={this.loadContractors.bind(this)} />)}
 
