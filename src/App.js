@@ -8,20 +8,22 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import NavBar from './components/NavBar'
 import SearchResults from './pages/SearchResults'
+import ContractorPage from './components/ContractorSideBarComponent/ContractorPage'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-     <NavBar/>
-      <Switch>
-        <Route exact path="/" component={Home}/>
-        <Route exact path="/services" component={Services}/>
-        <Route exact path="/services/support" component={Support}/>
-        <Route exact path="/register" component={Register}/>
-        <Route exact path="/login" component={Login}/>
-        <Route exact path="/results" component={SearchResults} />
-      </Switch>
+        <NavBar />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/services" component={Services} />
+          <Route exact path="/services/support" component={Support} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/results" component={SearchResults} />
+          <Route exact path="/contractors" component={ContractorPage} />
+        </Switch>
 
       </BrowserRouter>
     </div>
