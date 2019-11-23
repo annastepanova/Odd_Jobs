@@ -2,7 +2,7 @@ import React from 'react'
 import '../map.css'
 import MapContainer from '../components/MapContainer'
 
-const accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ1MTg2ODN9.w_XCtdyOg15wv04DQobxtKBVOyuwwk8HMusWy-CUmCM"
+const accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ2MTM5MzF9.j6vOMTsR4s67RPBYuujRH5AUrHFc3EXH6wfnJOoXIyc"
 
 class SearchResults extends React.Component {
   state = {
@@ -36,8 +36,14 @@ class SearchResults extends React.Component {
       })
       .then(response => response.json())
       .then(data => {
-       
-       this.setState({ contractors: data })
+       const contractors = data.map(contractor => {
+        return {
+          first_name: contractor.first_name,
+          last_name: contractor.last_name
+        }
+      })
+       this.setState({ contractors })
+       console.log(contractors)
       })
 
   }

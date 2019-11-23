@@ -14,7 +14,13 @@ export class MapContainer extends React.Component {
 
 
   displayMarkers = () => {
+     
+    const first_name = this.props.contractors.map(contractor => contractor.first_name)
+    const last_name = this.props.contractors.map(contractor => contractor.last_name)
+
+
     return this.props.coordinates.map((point, index) => {
+     
       return <Marker
         key={index} id={index}
         position={{
@@ -22,8 +28,7 @@ export class MapContainer extends React.Component {
           lng: point.lng
         }}
         name={
-      `${this.props.contractors[[Math.floor(Math.random() * this.props.contractors.length)]].first_name}
-      ${this.props.contractors[[Math.floor(Math.random() * this.props.contractors.length)]].last_name}`
+      `${first_name[Math.floor(Math.random() * first_name.length)]} ${last_name[Math.floor(Math.random() * last_name.length)]}`
         }
         title={'$22'}
       
