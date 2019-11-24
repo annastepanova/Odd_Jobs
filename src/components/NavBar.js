@@ -13,7 +13,7 @@ export default function NavBar() {
       <li><NavLink className="login-tab" exact to="/register">Login/Register</NavLink></li>
       <div className="nav-btn-list">
         <button className="translate-button">EN | ES</button>
-        <button className="hire-button">HIRE</button>
+        <NavLink to="/services"><button className="hire-button">HIRE</button></NavLink>
       </div>
     </ul>
   </nav>

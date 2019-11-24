@@ -11,7 +11,7 @@ class ContractorPage extends Component {
         super(props)
 
         this.state = {
-            accessToken: "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ1NjA0NzZ9.awwaS43j5KzNPc0Cm6F1IfzKQ_zMThUX-MK-scd04AE",
+            accessToken: "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ2OTEzOTZ9.OCTN-3K9tpMSkfVs4-zsF-XzVC0vGLRSCJwdAoO3qUM",
             categories: []
         }
     }

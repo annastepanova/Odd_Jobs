@@ -32,7 +32,7 @@ class Services extends React.Component {
     return (
       <>
         <h1 className={styles.services_title}>All Odd Jobs</h1>
-        <Link exact to='/contractors'><div className={styles.all_services_img}>
+        <Link to='/contractors'><div className={styles.all_services_img}>
           {this.state.jobCategoriesImg.jobImages.map((item, i) => (
             <div key={i} className={styles.Job_img}>
               <img className={styles.Cada_img} src={item.url} alt={item.title} />
