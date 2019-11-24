@@ -1,6 +1,6 @@
 import React from "react";
+import { Link, withRouter } from "react-router-dom";
 import styles from "../css/services.module.css";
-import { Link } from "react-router-dom";
 
 class Services extends React.Component {
   state = {
@@ -8,24 +8,30 @@ class Services extends React.Component {
     categoriesImgSelect: []
   };
 
+  handleImageClick = categoryId => () => {
+    const { history } = this.props;
+    history.push(`/contractors/${categoryId}`)
+  }
+
   render() {
+    const { categories } = this.props;
     return (
       <>
         <h1 className={styles.services_title}>All Odd Jobs</h1>
-        <Link to="/contractors">
+        <div>
           <div className={styles.all_services_img}>
-            {this.props.jobCategoriesImg.jobImages.map((item, i) => (
-              <div key={i} className={styles.Job_img}>
+            {categories.map(item => (
+              <div key={item.id} className={styles.Job_img}>
                 <img
-                  onClick={this.props.handleClick(item.title)}
+                  onClick={this.handleImageClick(item.id)}
                   className={styles.Cada_img}
-                  src={item.url}
-                  alt={item.title}
+                  src={item.image_url}
+                  alt={item.name}
                 />
               </div>
             ))}
           </div>
-        </Link>
+        </div>
         <footer className={styles.services_footer}>
           <p className={styles.services_footer_text}>
             {" "}
@@ -37,4 +43,4 @@ class Services extends React.Component {
   }
 }
 
-export default Services;
+export default withRouter(Services);
