@@ -2,13 +2,13 @@ import React from 'react'
 import '../map.css'
 import MapContainer from '../components/MapContainer'
 
-const accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ3MTE5NzB9.WHoIaJynjO_ZaDR3c4EzHkKoBGNT513W9CRuklAEgno"
+const accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ3MTU1NzB9.aRRT8hn0TDF-nAkO901-Qcp3b81ajA12RiDDXVIcj0Q"
 
 class SearchResults extends React.Component {
   state = {
-   addresses: [],
-   coordinates: [],
-   contractors: []
+    addresses: [],
+    coordinates: [],
+    contractors: []
   }
 
 
@@ -21,8 +21,8 @@ class SearchResults extends React.Component {
       })
       .then(response => response.json())
       .then(data => {
-       
-       this.setState({ addresses: data })
+
+        this.setState({ addresses: data })
       })
 
   }
@@ -36,14 +36,14 @@ class SearchResults extends React.Component {
       })
       .then(response => response.json())
       .then(data => {
-       const contractors = data.map(contractor => {
-        return {
-          first_name: contractor.first_name,
-          last_name: contractor.last_name
-        }
-      })
-       this.setState({ contractors })
-       console.log(contractors)
+        const contractors = data.map(contractor => {
+          return {
+            first_name: contractor.first_name,
+            last_name: contractor.last_name
+          }
+        })
+        this.setState({ contractors })
+        console.log(contractors)
       })
 
   }
@@ -54,12 +54,12 @@ class SearchResults extends React.Component {
     this.state.addresses.map(address => {
       const street = address.street1
       let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${street},FL&key=AIzaSyB1EAffcBClxJgB7TqI_FM7cuFLcvYk7-M`
-  
+
       fetch(url)
         .then(response => response.json())
         .then(data => {
           data.results.map(address => {
-            
+
             const lat = address.geometry.location.lat
             const lng = address.geometry.location.lng
             const coordinates = {
@@ -67,44 +67,45 @@ class SearchResults extends React.Component {
             }
             coordArray.push(coordinates)
             // console.log('DOES IT WORK???', coordinates)
-     
+
           })
-         
+
           this.setState({ coordinates: coordArray })
         }
-         )
+        )
     }
-     
-    )} 
-     
+
+    )
+  }
+
   componentDidMount() {
     this.fetchAddress()
     this.fetchContractor()
-   
+
   }
-      
-render(){
-  
-  return(
 
-    <div>
-      
-      <div style={{ position: 'relative', minHeight: '500px', marginTop: '50px', marginLeft: '490px', marginRight: '76px' }}>
-        {
-         
-          <MapContainer
-            coordinates={this.state.coordinates}
-            contractors={this.state.contractors}
-          />
-        }
+  render() {
+
+    return (
+
+      <div>
+
+        <div style={{ position: 'relative', minHeight: '500px', marginTop: '50px', marginLeft: '490px', marginRight: '76px' }}>
+          {
+
+            <MapContainer
+              coordinates={this.state.coordinates}
+              contractors={this.state.contractors}
+            />
+          }
+        </div>
+        <button onClick={this.getLocationForAddress} className="rectangle-copy-2 search">Search</button>
+
       </div>
-      <button onClick={this.getLocationForAddress} className="rectangle-copy-2 search">Search</button>
-    
-    </div>
-  )
-}
+    )
+  }
 
-  
+
 
 }
 
