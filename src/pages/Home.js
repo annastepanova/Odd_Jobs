@@ -1,5 +1,6 @@
 import React from 'react'
 import '../Home.css'
+import {Link} from 'react-router-dom'
 
 const token = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ2MDY5NTl9.kJ5bVa4Tf57IPbSgCFJuB0v5fZEFtEjExbjcuixPU4o"
 
@@ -34,7 +35,7 @@ export default class Home extends React.Component {
               </div>
             </form>
             <div className="main-btns">
-              <button className="hire-btn">Hire a Contractor</button>
+              <Link to="/services"><button className="hire-btn">Hire a Contractor</button></Link>
               <button className="contractor-btn">Be a Contractor</button>
             </div>
           </div>
