@@ -4,7 +4,7 @@ import "../ContractorSideBarComponent/Contractor.css";
 import CategoryItem from "../CategoryItem/CategoryItem";
 import axios from "axios";
 
-const ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ3MTU1NzB9.aRRT8hn0TDF-nAkO901-Qcp3b81ajA12RiDDXVIcj0Q"
+const ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ4MDA0MTJ9.ZiiK4DYLnCB6samw3COd6y3s0bJKWwA4Xh2uk9q0v0g"
 const headers = { Authorization: `Bearer ${ACCESS_TOKEN}` }
 class ContractorPage extends Component {
     state = { categories: [], contractors: [] }
@@ -45,6 +45,11 @@ class ContractorPage extends Component {
                 this.setState({ contractors: res.data.contractors });
             });
     };
+
+    handleViewProfile = (contractorProfile) => {
+        const { history, match } = this.props;
+        history.push(`/contractors/${match.params.id}/${contractorProfile}`)
+    }
 
     render() {
         console.log(this.state.contractors)
@@ -99,7 +104,10 @@ class ContractorPage extends Component {
                                                     <div>{value.review_text}</div>
                                                     <br />
                                                     <div className="profile-btn-container">
-                                                        <button className="profile-btn">View Profile</button>
+                                                        <button 
+                                                        className="profile-btn"
+                                                        onClick={this.handleViewProfile}
+                                                        >View Profile</button>
                                                     </div>
                                                     <br />
 
