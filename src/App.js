@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import NavBar from "./components/NavBar";
 import SearchResults from "./pages/SearchResults";
 import ContractorPage from "./components/ContractorSideBarComponent/ContractorPage";
+import ContractorProfile from "./pages/ContractorProfile"
 import "./App.css";
 
 class App extends React.Component {
@@ -66,6 +67,11 @@ class App extends React.Component {
               exact
               path="/contractors/:id"
               component={ContractorPage}
+            />
+            <Route 
+              exact 
+              path="/contractors/:id/:profile"
+              component={ContractorProfile}
             />
           </Switch>
         </BrowserRouter>

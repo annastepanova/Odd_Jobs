@@ -11,7 +11,10 @@ export default class ContractorProfile extends Component {
     const requests = [
         axios.get(`/contractors/${match.params.id}`, { headers }),
     ];
-    await console.log(requests);
+    const [
+      {data: contractorInfo}
+    ] = await Promise.all(requests);
+    console.log(contractorInfo)
    
 }
 
@@ -21,7 +24,7 @@ export default class ContractorProfile extends Component {
   render() {
     return (
       <div>
-        <h1>Profile</h1>
+        <h1>Contractor Profile</h1>
       </div>
     )
   }
