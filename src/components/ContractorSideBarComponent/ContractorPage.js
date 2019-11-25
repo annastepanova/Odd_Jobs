@@ -11,7 +11,14 @@ class ContractorPage extends Component {
     componentDidMount() {
         this.fetchLayout()
     }
+    handleSortRating = event => {
+        const { contractors } = this.state
+        const sortedContractors = contractors.sort((a, b) => {
+            return b.rating - a.rating
+        })
 
+        this.setState({ contractors: sortedContractors })
+    }
     fetchLayout = async () => {
         const { match } = this.props;
         const requests = [
@@ -45,38 +52,70 @@ class ContractorPage extends Component {
                 <ul>
                     <li className="filter-header">Filters:</li>
                 </ul>
-                <ul className="rating-box">
-                    <li>Ratings</li>
-                    <div className="star">
-                        <li>★</li>
-                        <li>★★</li>
-                        <li>★★★</li>
-                        <li>★★★★</li>
-                        <li>★★★★★</li>
+                <div className="flex-box">
+                    <div className="container1">
+                        <ul className="rating-box">
+                            <li className="rating-header">Ratings</li>
+                            <div className="star">
+                                <li className="high" onClick={this.handleSortRating}>Highest Rated</li>
+                                <li className="low">Lowest Rated</li>
+
+
+                            </div>
+                        </ul>
+                        <ul className="services-box">
+                            <li className="category_title">Services</li>
+                            {this.state.categories.map((category, index) => (
+                                <CategoryItem
+                                    key={index}
+                                    category={category}
+                                    loadContractors={this.loadContractors}
+                                />
+                            ))}
+                        </ul>
                     </div>
-                </ul>
-                <ul className="services-box">
-                    <li className="category_title">Services</li>
-                    {this.state.categories.map((category, index) => (
-                        <CategoryItem
-                            key={index}
-                            category={category}
-                            loadContractors={this.loadContractors}
-                        />
-                    ))}
-                </ul>
-                <div>
-                    {this.state.contractors &&
-                        this.state.contractors.map(contractor => {
-                            return (
-                                <div>
-                                    <p>{contractor.first_name} {contractor.last_name}</p>
-                                    <img src={contractor.contractor_image} alt="contractor" />
-                                </div>
-                            );
-                        })}
+                    <div className="container2">
+                        {this.state.contractors &&
+                            this.state.contractors.map(contractor => {
+                                return (
+                                    <div className="card">
+                                        <div className='image-div'>
+                                            <img src={contractor.contractor_image} alt="contractor" className="img" />
+                                        </div>
+                                        <div className='text-div'>
+                                            <div className="contractor-name1">
+                                                <p>{contractor.first_name} {contractor.last_name}</p>
+                                                <br />
+                                                <p classname="paragraph-image">{contractor.background_check ? <img src="https://nexusipe-resource-exchange.s3.amazonaws.com/pictures/ambassador_large.png" className="badge"></img> : ""}</p>
+                                            </div>
+                                            <br />
+                                            {contractor.ratings.map((value, index) => (
+                                                <>
+
+                                                    <div>{value.value}</div>
+                                                    <br />
+
+                                                    <div>{value.review_text}</div>
+                                                    <br />
+                                                    <div className="profile-btn-container">
+                                                        <button className="profile-btn">View Profile</button>
+                                                    </div>
+                                                    <br />
+
+                                                </>
+                                            ))}
+
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                    </div>
+
+
                 </div>
-            </div>
+
+
+            </div >
         );
     }
 }
