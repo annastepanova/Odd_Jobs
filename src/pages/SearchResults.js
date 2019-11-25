@@ -1,113 +1,107 @@
-import React from 'react'
-import '../map.css'
-import MapContainer from '../components/MapContainer'
+import React from "react";
+import "../map.css";
+import MapContainer from "../components/MapContainer";
 
-const accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ3MTU1NzB9.aRRT8hn0TDF-nAkO901-Qcp3b81ajA12RiDDXVIcj0Q"
+const accessToken =
+  "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ3OTEwNzR9.E59EUL0hLNW6jotSMBV22MUDsbkxv20kq4n4IDPOCKo";
 
 class SearchResults extends React.Component {
   state = {
     addresses: [],
     coordinates: [],
     contractors: []
-  }
-
+  };
 
   fetchAddress = () => {
-    fetch('http://localhost:3000/addresses',
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`
-        }
-      })
+    fetch("http://localhost:3000/addresses", {
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    })
       .then(response => response.json())
       .then(data => {
-
-        this.setState({ addresses: data })
-      })
-
-  }
+        this.setState({ addresses: data });
+      });
+  };
 
   fetchContractor = () => {
-    fetch('http://localhost:3000/contractors',
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`
-        }
-      })
+    fetch("http://localhost:3000/contractors", {
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    })
       .then(response => response.json())
       .then(data => {
         const contractors = data.map(contractor => {
           return {
             first_name: contractor.first_name,
             last_name: contractor.last_name
-          }
-        })
-        this.setState({ contractors })
-        console.log(contractors)
-      })
-
-  }
+          };
+        });
+        this.setState({ contractors });
+        console.log(contractors);
+      });
+  };
 
   getLocationForAddress = () => {
-    let coordArray = []
+    let coordArray = [];
 
     this.state.addresses.map(address => {
-      const street = address.street1
-      let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${street},FL&key=AIzaSyB1EAffcBClxJgB7TqI_FM7cuFLcvYk7-M`
+      const street = address.street1;
+      let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${street},FL&key=AIzaSyB1EAffcBClxJgB7TqI_FM7cuFLcvYk7-M`;
 
       fetch(url)
         .then(response => response.json())
         .then(data => {
           data.results.map(address => {
-
-            const lat = address.geometry.location.lat
-            const lng = address.geometry.location.lng
+            const lat = address.geometry.location.lat;
+            const lng = address.geometry.location.lng;
             const coordinates = {
-              lat, lng
-            }
-            coordArray.push(coordinates)
+              lat,
+              lng
+            };
+            coordArray.push(coordinates);
             // console.log('DOES IT WORK???', coordinates)
+          });
 
-          })
-
-          this.setState({ coordinates: coordArray })
-        }
-        )
-    }
-
-    )
-  }
+          this.setState({ coordinates: coordArray });
+        });
+    });
+  };
 
   componentDidMount() {
-    this.fetchAddress()
-    this.fetchContractor()
-
+    this.fetchAddress();
+    this.fetchContractor();
   }
 
   render() {
-
     return (
-
       <div>
-
-        <div style={{ position: 'relative', minHeight: '500px', marginTop: '50px', marginLeft: '490px', marginRight: '76px' }}>
+        <div
+          style={{
+            position: "relative",
+            minHeight: "500px",
+            marginTop: "50px",
+            marginLeft: "490px",
+            marginRight: "76px"
+          }}
+        >
           {
-
             <MapContainer
               coordinates={this.state.coordinates}
               contractors={this.state.contractors}
             />
           }
         </div>
-        <button onClick={this.getLocationForAddress} className="rectangle-copy-2 search">Search</button>
-
+        <button
+          onClick={this.getLocationForAddress}
+          className="rectangle-copy-2 search"
+        >
+          Search
+        </button>
       </div>
-    )
+    );
   }
-
-
-
 }
 
-export default SearchResults
-
+export default SearchResults;
