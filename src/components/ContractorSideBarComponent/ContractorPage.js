@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from 'react-router-dom'
 import "../ContractorSideBarComponent/Contractor.css";
 import CategoryItem from "../CategoryItem/CategoryItem";
 import axios from "axios";
@@ -120,4 +121,5 @@ class ContractorPage extends Component {
     }
 }
 
-export default ContractorPage;
+
+export default withRouter(ContractorPage);
