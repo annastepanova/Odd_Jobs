@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 
-const ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ4ODM5OTB9.vuA6b2ig-4sMcrBaMd_s1vS17sCKU6ccEN28CzckirI"
+const ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ4OTQ5MjR9.3FYd_ClS1Ixneknsl2lfQnpWBD47Jmyvr0HVUcwMYfE"
 const headers = { Authorization: `Bearer ${ACCESS_TOKEN}` }
 export default class ContractorProfile extends Component {
 
