@@ -2,7 +2,7 @@ import React from 'react'
 import '../map.css'
 import MapContainer from '../components/MapContainer'
 
-const accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ4MDg2OTF9.usrE_VY9qfVN6C7ygGhf0koehUIbVziBZx7x8Tzv24o"
+const accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ4MTU2NzZ9.cGhYuxeh_7rdfKVW1hAzfbixX4dVlY9tAOl_EG1xW_s"
 
 class SearchResults extends React.Component {
   state = {

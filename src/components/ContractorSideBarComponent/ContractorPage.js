@@ -4,7 +4,7 @@ import "../ContractorSideBarComponent/Contractor.css";
 import CategoryItem from "../CategoryItem/CategoryItem";
 import axios from "axios";
 
-const ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ4MDg2OTF9.usrE_VY9qfVN6C7ygGhf0koehUIbVziBZx7x8Tzv24o"
+const ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ4MTU2NzZ9.cGhYuxeh_7rdfKVW1hAzfbixX4dVlY9tAOl_EG1xW_s"
 const headers = { Authorization: `Bearer ${ACCESS_TOKEN}` }
 class ContractorPage extends Component {
     state = { categories: [], contractors: [] }
