@@ -26,7 +26,7 @@ class App extends React.Component {
   fetchCategories = async () => {
     const { data } = await axios.get('http://localhost:3000/job_categories', {
       headers: {
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ4MDA0MTJ9.ZiiK4DYLnCB6samw3COd6y3s0bJKWwA4Xh2uk9q0v0g'
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ4MDg2OTF9.usrE_VY9qfVN6C7ygGhf0koehUIbVziBZx7x8Tzv24o'
       }
     })
     this.setState({ categories: data })
@@ -68,8 +68,8 @@ class App extends React.Component {
               path="/contractors/:id"
               component={ContractorPage}
             />
-            <Route 
-              exact 
+            <Route
+              exact
               path="/contractors/:id/:profile"
               component={ContractorProfile}
             />
