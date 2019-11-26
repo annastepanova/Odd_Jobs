@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 import Home from "./pages/Home";
 import Services from "./pages/Services/components/Services";
 import Support from "./pages/Support";
@@ -11,12 +11,13 @@ import SearchResults from "./pages/SearchResults";
 import ContractorPage from "./components/ContractorSideBarComponent/ContractorPage";
 import ContractorProfile from "./pages/ContractorProfile"
 import "./App.css";
+import Calendar from "./pages/Calendar";
 
 class App extends React.Component {
   state = {
     categoriesImgSelect: [],
     contractors: [],
-    categories: [],
+    categories: []
   };
 
   componentDidMount() {
@@ -24,14 +25,14 @@ class App extends React.Component {
   }
 
   fetchCategories = async () => {
-    const { data } = await axios.get('http://localhost:3000/job_categories', {
+    const { data } = await axios.get("http://localhost:3000/job_categories", {
       headers: {
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ3OTg2MzF9.w4K_kglBkWqz9K3oNAKNNJfwPmvvD3Y6XwuErVcD6us'
 
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ3OTg2MzF9.w4K_kglBkWqz9K3oNAKNNJfwPmvvD3Y6XwuErVcD6us'
       }
-    })
-    this.setState({ categories: data })
-  }
+    });
+    this.setState({ categories: data });
+  };
 
   handleClickImg = categorySelected => () => {
     const categoriesImgSelect = this.state.jobCategoriesImg.jobImages.find(
@@ -54,16 +55,15 @@ class App extends React.Component {
             <Route
               exact
               path="/services"
-              component={() => (
-                <Services
-                  categories={categories}
-                />
-              )}
+              component={() => <Services categories={categories} />}
             />
             <Route exact path="/services/support" component={Support} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/results" component={SearchResults} />
+           <Route exact path="/calendar" component={Calendar} />
+            
+
             <Route
               exact
               path="/contractors/:id"
@@ -74,6 +74,7 @@ class App extends React.Component {
               path="/contractors/:id/:profile"
               component={ContractorProfile}
             />
+
           </Switch>
         </BrowserRouter>
       </div>
