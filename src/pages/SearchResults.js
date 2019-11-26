@@ -2,105 +2,80 @@ import React from "react";
 import "../map.css";
 import MapContainer from "../components/MapContainer";
 
-const accessToken =
-  "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ3OTEwNzR9.E59EUL0hLNW6jotSMBV22MUDsbkxv20kq4n4IDPOCKo";
+const accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ4NjQ5ODB9.-VNWj3QVNbA19GGuyYxjPA9HsEbISiWQ-_O9pSR9cxg"
+
 
 class SearchResults extends React.Component {
   state = {
-    addresses: [],
     coordinates: [],
     contractors: []
   };
 
-  fetchAddress = () => {
-    fetch("http://localhost:3000/addresses", {
-      headers: {
-        Authorization: `Bearer ${accessToken}`
-      }
-    })
-      .then(response => response.json())
-      .then(data => {
-        this.setState({ addresses: data });
-      });
-  };
 
   fetchContractor = () => {
-    fetch("http://localhost:3000/contractors", {
-      headers: {
-        Authorization: `Bearer ${accessToken}`
-      }
-    })
+    fetch('http://localhost:3000/contractors',
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
+      })
       .then(response => response.json())
-      .then(data => {
-        const contractors = data.map(contractor => {
-          return {
-            first_name: contractor.first_name,
-            last_name: contractor.last_name
-          };
-        });
-        this.setState({ contractors });
-        console.log(contractors);
-      });
-  };
+      .then(({contractors}) => {
+      
+        this.setState({ contractors })
+      })
 
-  getLocationForAddress = () => {
-    let coordArray = [];
+  }
 
-    this.state.addresses.map(address => {
-      const street = address.street1;
-      let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${street},FL&key=AIzaSyB1EAffcBClxJgB7TqI_FM7cuFLcvYk7-M`;
+  fetchAddress = async () => {
+    const contractors = await fetch('http://localhost:3000/contractors',
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
+      })
+    const data = await contractors.json()
+    const requests = []
+    for (let contractorIndex in data.contractors){
+      let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${data.contractors[contractorIndex].address},FL&key=AIzaSyB1EAffcBClxJgB7TqI_FM7cuFLcvYk7-M`
+      requests.push(fetch(url))
+    }
+    const responses = await Promise.all(requests)
+    const coordsArray = await Promise.all(responses.map(async response => (await response.json()).results[0].geometry.location))
+    console.log(coordsArray)
+    for(let coordsIndex in coordsArray){
+      data.contractors[coordsIndex] = {...data.contractors[coordsIndex], ...coordsArray[coordsIndex]}
+    }
+    this.setState({ contractors: data.contractors })
+  }
 
-      fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          data.results.map(address => {
-            const lat = address.geometry.location.lat;
-            const lng = address.geometry.location.lng;
-            const coordinates = {
-              lat,
-              lng
-            };
-            coordArray.push(coordinates);
-            // console.log('DOES IT WORK???', coordinates)
-          });
+    this.fetchAddress()
 
-          this.setState({ coordinates: coordArray });
-        });
-    });
-  };
-
-  componentDidMount() {
-    this.fetchAddress();
-    this.fetchContractor();
   }
 
   render() {
     return (
+      <>
       <div>
-        <div
-          style={{
-            position: "relative",
-            minHeight: "500px",
-            marginTop: "50px",
-            marginLeft: "490px",
-            marginRight: "76px"
-          }}
-        >
+
+        <div style={{ position: 'relative', minHeight: '500px', marginTop: '50px', marginLeft: '150px', marginRight: '150px' }}>
           {
             <MapContainer
-              coordinates={this.state.coordinates}
-              contractors={this.state.contractors}
+              coordinates={this.state.contractors}
+              // contractors={this.state.contractors}
             />
           }
         </div>
-        <button
-          onClick={this.getLocationForAddress}
-          className="rectangle-copy-2 search"
-        >
-          Search
-        </button>
+   
       </div>
-    );
+   
+          <footer className="footer">
+          <div>
+            <p>Conditions of Use Privacy ©2019, Odd Jobs, Inc.</p>
+          </div>
+        </footer>
+        </>
+    )
   }
 }
 

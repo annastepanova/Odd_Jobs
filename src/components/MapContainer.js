@@ -11,14 +11,11 @@ export class MapContainer extends React.Component {
     selectedPlace: {},
   };
  
+  
 
 
   displayMarkers = () => {
      
-    const first_name = this.props.contractors.map(contractor => contractor.first_name)
-    const last_name = this.props.contractors.map(contractor => contractor.last_name)
-
-
     return this.props.coordinates.map((point, index) => {
      
       return <Marker
@@ -28,9 +25,11 @@ export class MapContainer extends React.Component {
           lng: point.lng
         }}
         name={
-      `${first_name[Math.floor(Math.random() * first_name.length)]} ${last_name[Math.floor(Math.random() * last_name.length)]}`
+       `${point.first_name} ${point.last_name}`
         }
-        title={'$22'}
+        title={`${point.address}`}
+        options={{ icon: { url: `${point.contractor_image}`, scaledSize: { width: 40, height: 40 }} }}
+      
       
         onClick={this.onMarkerClick}
         />
@@ -60,8 +59,8 @@ export class MapContainer extends React.Component {
       <Map google={this.props.google}
         onClick={this.onMapClicked}
         initialCenter={{
-          lat: 25.7617,
-          lng: -80.1918
+          lat: 25.7782,
+          lng: -80.1868
         }}
         zoom={12}
         style={{
@@ -75,9 +74,11 @@ export class MapContainer extends React.Component {
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>
+         
           <div>
-             <h3>{this.state.selectedPlace.title}</h3>
+             <h5>{this.state.selectedPlace.title}</h5>
             <h3>{this.state.selectedPlace.name}</h3>
+
           </div>
         </InfoWindow>
       </Map>
