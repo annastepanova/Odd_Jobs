@@ -26,7 +26,7 @@ class App extends React.Component {
   fetchCategories = async () => {
     const { data } = await axios.get('http://localhost:3000/job_categories', {
       headers: {
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ4MTU2NzZ9.cGhYuxeh_7rdfKVW1hAzfbixX4dVlY9tAOl_EG1xW_s'
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ4NjQ5ODB9.-VNWj3QVNbA19GGuyYxjPA9HsEbISiWQ-_O9pSR9cxg'
       }
     })
     this.setState({ categories: data })
