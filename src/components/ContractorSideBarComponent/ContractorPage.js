@@ -3,7 +3,7 @@ import "../ContractorSideBarComponent/Contractor.css";
 import CategoryItem from "../CategoryItem/CategoryItem";
 import axios from "axios";
 
-const ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ3MTU1NzB9.aRRT8hn0TDF-nAkO901-Qcp3b81ajA12RiDDXVIcj0Q"
+const ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ3OTg2MzF9.w4K_kglBkWqz9K3oNAKNNJfwPmvvD3Y6XwuErVcD6us"
 const headers = { Authorization: `Bearer ${ACCESS_TOKEN}` }
 class ContractorPage extends Component {
     state = { categories: [], contractors: [] }
@@ -39,7 +39,7 @@ class ContractorPage extends Component {
     };
 
     render() {
-        console.log(this.state.contractors)
+        console.log({contractors_from_state: this.state.contractors})
         return (
             <div className="filter-components">
                 <ul>
@@ -69,7 +69,7 @@ class ContractorPage extends Component {
                     {this.state.contractors &&
                         this.state.contractors.map(contractor => {
                             return (
-                                <div>
+                                <div key={contractor.id}>
                                     <p>{contractor.first_name} {contractor.last_name}</p>
                                     <img src={contractor.contractor_image} alt="contractor" />
                                 </div>
