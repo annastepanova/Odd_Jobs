@@ -3,21 +3,21 @@ import { Map, InfoWindow, GoogleApiWrapper, Marker } from 'google-maps-react'
 
 
 export class MapContainer extends React.Component {
-  
+
 
   state = {
     showingInfoWindow: false,
     activeMarker: {},
     selectedPlace: {},
   };
- 
-  
+
+
 
 
   displayMarkers = () => {
-     
+
     return this.props.coordinates.map((point, index) => {
-     
+
       return <Marker
         key={index} id={index}
         position={{
@@ -25,14 +25,14 @@ export class MapContainer extends React.Component {
           lng: point.lng
         }}
         name={
-       `${point.first_name} ${point.last_name}`
+          `${point.first_name} ${point.last_name}`
         }
         title={`${point.address}`}
-        options={{ icon: { url: `${point.contractor_image}`, scaledSize: { width: 40, height: 40 }} }}
-      
-      
+        options={{ icon: { url: `${point.contractor_image}`, scaledSize: { width: 40, height: 40 } } }}
+
+
         onClick={this.onMarkerClick}
-        />
+      />
 
     })
 
@@ -65,18 +65,18 @@ export class MapContainer extends React.Component {
         zoom={12}
         style={{
           width: '100%',
-          height: '600px',
+          height: '500px',
 
         }}>
         {this.displayMarkers()}
- 
+
 
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>
-         
+
           <div>
-             <h5>{this.state.selectedPlace.title}</h5>
+            <h5>{this.state.selectedPlace.title}</h5>
             <h3>{this.state.selectedPlace.name}</h3>
 
           </div>
@@ -85,7 +85,7 @@ export class MapContainer extends React.Component {
     )
   }
 }
-  
+
 
 export default GoogleApiWrapper({
   apiKey: ('AIzaSyB1EAffcBClxJgB7TqI_FM7cuFLcvYk7-M')

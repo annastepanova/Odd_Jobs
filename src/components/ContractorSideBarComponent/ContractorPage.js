@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import "../ContractorSideBarComponent/Contractor.css";
 import CategoryItem from "../CategoryItem/CategoryItem";
 import axios from "axios";
-
-
 
 const ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ3OTg2MzF9.w4K_kglBkWqz9K3oNAKNNJfwPmvvD3Y6XwuErVcD6us"
 const headers = { Authorization: `Bearer ${ACCESS_TOKEN}` }
@@ -65,11 +63,12 @@ class ContractorPage extends Component {
     }
 
     render() {
-        console.log({contractors_from_state: this.state.contractors})
+        console.log({ contractors_from_state: this.state.contractors })
         return (
             <div className="filter-components">
                 <ul>
                     <li className="filter-header">Filters:</li>
+                    <Link exact to="/results"> <li className="map-filters"><img src="https://static.vecteezy.com/system/resources/previews/000/564/195/non_2x/map-pointer-icon-vector.jpg" className="map-marker-icon"></img></li></Link>
                 </ul>
                 <div className="flex-box">
                     <div className="container1">
