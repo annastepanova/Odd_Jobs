@@ -140,4 +140,9 @@
       margin-left: 5px;
   }
 
-  
+.map-marker-icon {
+    height:30px;
+    width: 30px;
+    margin-left: 20px;
+    cursor: pointer;
+}

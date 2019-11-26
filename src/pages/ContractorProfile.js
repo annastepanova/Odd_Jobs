@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 
-const ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ4NjQ5ODB9.-VNWj3QVNbA19GGuyYxjPA9HsEbISiWQ-_O9pSR9cxg"
+const ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ4ODM5OTB9.vuA6b2ig-4sMcrBaMd_s1vS17sCKU6ccEN28CzckirI"
 const headers = { Authorization: `Bearer ${ACCESS_TOKEN}` }
 export default class ContractorProfile extends Component {
 
@@ -17,7 +17,7 @@ export default class ContractorProfile extends Component {
       { data: contractorInfo }
     ] = await Promise.all(requests);
     this.setState({ contractorInfo })
-    // console.log(contractorInfo)
+    console.log(contractorInfo)
   }
 
   componentDidMount() {
@@ -31,6 +31,7 @@ export default class ContractorProfile extends Component {
         <p>{contractorInfo.first_name} {contractorInfo.last_name}</p>
         <p>{contractorInfo.address}</p>
         <p>{contractorInfo.background_check ? <img src="https://nexusipe-resource-exchange.s3.amazonaws.com/pictures/ambassador_large.png" className="badge"></img> : "Not Yet Verified"}</p>
+
       </div>
     )
   }
