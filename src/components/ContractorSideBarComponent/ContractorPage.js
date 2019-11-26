@@ -4,7 +4,7 @@ import "../ContractorSideBarComponent/Contractor.css";
 import CategoryItem from "../CategoryItem/CategoryItem";
 import axios from "axios";
 
-const ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ4MDA0MTJ9.ZiiK4DYLnCB6samw3COd6y3s0bJKWwA4Xh2uk9q0v0g"
+const ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ4MDg2OTF9.usrE_VY9qfVN6C7ygGhf0koehUIbVziBZx7x8Tzv24o"
 const headers = { Authorization: `Bearer ${ACCESS_TOKEN}` }
 class ContractorPage extends Component {
     state = { categories: [], contractors: [] }
@@ -92,21 +92,24 @@ class ContractorPage extends Component {
                                             <div className="contractor-name1">
                                                 <p>{contractor.first_name} {contractor.last_name}</p>
                                                 <br />
-                                                <p classname="paragraph-image">{contractor.background_check ? <img src="https://nexusipe-resource-exchange.s3.amazonaws.com/pictures/ambassador_large.png" className="badge"></img> : ""}</p>
+                                                <p className="paragraph-image">{contractor.background_check ? <img src="https://nexusipe-resource-exchange.s3.amazonaws.com/pictures/ambassador_large.png" className="badge"></img> : ""}</p>
+                                            </div>
+                                            <br />
+                                            <div>{contractor.address}
                                             </div>
                                             <br />
                                             {contractor.ratings.map((value, index) => (
                                                 <>
 
-                                                    <div>{value.value}</div>
+                                                    <div>{[...Array(Math.floor(value.value)).keys()].map(i => <img src={"https://yakimaymca.org/wp-content/uploads/2018/11/Star.png"} key={`rating${i}`} className="badge" alt="starz" />)}</div>
                                                     <br />
 
                                                     <div>{value.review_text}</div>
                                                     <br />
                                                     <div className="profile-btn-container">
-                                                        <button 
-                                                        className="profile-btn"
-                                                        onClick={this.handleViewProfile}
+                                                        <button
+                                                            className="profile-btn"
+                                                            onClick={this.handleViewProfile}
                                                         >View Profile</button>
                                                     </div>
                                                     <br />
