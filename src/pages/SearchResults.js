@@ -1,15 +1,15 @@
-import React from 'react'
-import '../map.css'
-import MapContainer from '../components/MapContainer'
-
+import React from "react";
+import "../map.css";
+import MapContainer from "../components/MapContainer";
 
 const accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ4ODM5OTB9.vuA6b2ig-4sMcrBaMd_s1vS17sCKU6ccEN28CzckirI"
+
 
 class SearchResults extends React.Component {
   state = {
     coordinates: [],
     contractors: []
-  }
+  };
 
 
   fetchContractor = () => {
@@ -50,21 +50,20 @@ class SearchResults extends React.Component {
   }
 
 
+
   componentDidMount() {
     this.fetchAddress()
+
   }
 
   render() {
-
     return (
       <>
         <div>
-
-          <div style={{ position: 'relative', minHeight: '500px', marginTop: '50px', marginLeft: '150px', marginRight: '150px' }}>
-            {
-
-              <MapContainer
-                coordinates={this.state.contractors}
+        <div style={{ position: 'relative', minHeight: '500px', marginTop: '50px', marginLeft: '150px', marginRight: '150px' }}>
+          {
+            <MapContainer
+              coordinates={this.state.contractors}
               // contractors={this.state.contractors}
               />
             }
@@ -76,10 +75,6 @@ class SearchResults extends React.Component {
       </>
     )
   }
-
-
-
 }
 
-export default SearchResults
-
+export default SearchResults;
