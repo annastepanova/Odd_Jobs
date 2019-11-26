@@ -1,15 +1,6 @@
-.rectangle-copy-2 {
-	height: 61px;
-	width: 182px;
-	border-radius: 8px;
-  background-color: #302E98;
-  color: white;
-  margin-top: 120px;
+.footer {
+  position:absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
-
-.search {
-  font-family: Arial;	
-  font-size: 18px;	
-  font-weight: bold;	
-  letter-spacing: 0.04px;	
-  line-height: 21px;}

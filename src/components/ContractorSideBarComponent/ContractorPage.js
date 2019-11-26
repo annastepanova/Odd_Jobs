@@ -4,7 +4,9 @@ import "../ContractorSideBarComponent/Contractor.css";
 import CategoryItem from "../CategoryItem/CategoryItem";
 import axios from "axios";
 
-const ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ4NjQ5ODB9.-VNWj3QVNbA19GGuyYxjPA9HsEbISiWQ-_O9pSR9cxg"
+
+const ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ3OTg2MzF9.w4K_kglBkWqz9K3oNAKNNJfwPmvvD3Y6XwuErVcD6us"
+
 const headers = { Authorization: `Bearer ${ACCESS_TOKEN}` }
 class ContractorPage extends Component {
     state = { categories: [], contractors: [] }
@@ -53,7 +55,7 @@ class ContractorPage extends Component {
     }
 
     render() {
-        console.log(this.state.contractors)
+        console.log({contractors_from_state: this.state.contractors})
         return (
             <div className="filter-components">
                 <ul>
@@ -81,6 +83,7 @@ class ContractorPage extends Component {
                             ))}
                         </ul>
                     </div>
+
                     <div className="container2">
                         {this.state.contractors &&
                             this.state.contractors.map(contractor => {
@@ -123,6 +126,7 @@ class ContractorPage extends Component {
                                 );
                             })}
                     </div>
+
 
 
                 </div>
