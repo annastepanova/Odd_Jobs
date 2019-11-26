@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import NavBar from "./components/NavBar";
 import SearchResults from "./pages/SearchResults";
 import ContractorPage from "./components/ContractorSideBarComponent/ContractorPage";
+import ContractorProfile from "./pages/ContractorProfile"
 import "./App.css";
 
 class App extends React.Component {
@@ -26,6 +27,7 @@ class App extends React.Component {
     const { data } = await axios.get('http://localhost:3000/job_categories', {
       headers: {
         Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ3OTg2MzF9.w4K_kglBkWqz9K3oNAKNNJfwPmvvD3Y6XwuErVcD6us'
+
       }
     })
     this.setState({ categories: data })
@@ -66,6 +68,11 @@ class App extends React.Component {
               exact
               path="/contractors/:id"
               component={ContractorPage}
+            />
+            <Route
+              exact
+              path="/contractors/:id/:profile"
+              component={ContractorProfile}
             />
           </Switch>
         </BrowserRouter>
