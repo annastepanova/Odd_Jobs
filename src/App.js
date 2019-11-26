@@ -10,7 +10,7 @@ import NavBar from "./components/NavBar";
 import SearchResults from "./pages/SearchResults";
 import ContractorPage from "./components/ContractorSideBarComponent/ContractorPage";
 import "./App.css";
-import Calendar from "./pages/Calendar/Calendar";
+import Calendar from "./pages/Calendar";
 
 class App extends React.Component {
   state = {
