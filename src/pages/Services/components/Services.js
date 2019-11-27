@@ -11,7 +11,7 @@ class Services extends React.Component {
 
   handleImageClick = categoryId => () => {
     const { history } = this.props;
-    history.push(`/contractors/${categoryId}`)
+    history.push(`/category/${categoryId}`)
   }
 
   render() {
