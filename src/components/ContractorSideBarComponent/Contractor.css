@@ -146,3 +146,17 @@
     margin-left: 20px;
     cursor: pointer;
 }
+.back-map {
+    height: 40px;
+    width: 60px;
+    border-radius: 8px;
+    background-color: #302E98;
+    color: #FFFFFF;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 21px;
+    margin-left: 147px;
+    margin-top: 10px;
+
+}

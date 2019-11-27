@@ -33,13 +33,26 @@ class SearchResults extends Component {
     }
     this.setState({ contractors: contractors, fetched: true })
   }
+  constructor(props) {
+    super(props);
+    this.goBack = this.goBack.bind(this);
+  }
+
+  goBack() {
+    this.props.history.goBack();
+  }
 
   render() {
     return (
       <div>
+
         <div style={{ position: 'relative', minHeight: '500px', marginTop: '50px', marginLeft: '150px', marginRight: '150px' }}>
           <MapContainer coordinates={this.state.contractors} />
         </div>
+        <div>
+          <button onClick={this.goBack} className="back-map">Back</button>
+        </div>
+
       </div>
     )
   }
