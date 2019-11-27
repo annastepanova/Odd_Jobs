@@ -11,6 +11,7 @@ class ContractorPage extends Component {
     state = { categories: [], contractors: [], fetched: false };
 
     componentDidMount() {
+        window.scrollTo(0, 0)
         this.context.token && this.fetchLayout();
     }
 
