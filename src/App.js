@@ -10,6 +10,7 @@ import NavBar from "./components/NavBar";
 import SearchResults from "./pages/SearchResults";
 import ContractorPage from "./components/ContractorSideBarComponent/ContractorPage";
 import ContractorProfile from "./pages/ContractorProfile"
+import Authentication from './components/Authentication';
 import "./App.css";
 import Calendar from "./pages/Calendar";
 
@@ -29,7 +30,7 @@ class App extends React.Component {
       headers: {
 
 
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ4OTQ5MjR9.3FYd_ClS1Ixneknsl2lfQnpWBD47Jmyvr0HVUcwMYfE'
+        Authorization: sessionStorage.getItem('AUTH_TOKEN')
       }
     });
     this.setState({ categories: data });
@@ -62,17 +63,17 @@ class App extends React.Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/results" component={SearchResults} />
-           <Route exact path="/calendar" component={Calendar} />
-            
+            <Route exact path="/calendar" component={Calendar} />
+
 
             <Route
               exact
-              path="/contractors/:id"
+              path="/category/:id"
               component={ContractorPage}
             />
             <Route
               exact
-              path="/contractors/:id/:profile"
+              path="/contractor/:id"
               component={ContractorProfile}
             />
 

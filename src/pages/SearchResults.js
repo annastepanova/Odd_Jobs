@@ -2,7 +2,7 @@ import React from "react";
 import "../map.css";
 import MapContainer from "../components/MapContainer";
 
-const accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ4OTQ5MjR9.3FYd_ClS1Ixneknsl2lfQnpWBD47Jmyvr0HVUcwMYfE"
+const accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ4OTc0MzV9.MegyQOt82QkMopNFUr3OQXTmCUuzk3ZfEG6excf1jBo"
 
 
 class SearchResults extends React.Component {
@@ -60,10 +60,10 @@ class SearchResults extends React.Component {
     return (
       <>
         <div>
-        <div style={{ position: 'relative', minHeight: '500px', marginTop: '50px', marginLeft: '150px', marginRight: '150px' }}>
-          {
-            <MapContainer
-              coordinates={this.state.contractors}
+          <div style={{ position: 'relative', minHeight: '500px', marginTop: '50px', marginLeft: '150px', marginRight: '150px' }}>
+            {
+              <MapContainer
+                coordinates={this.state.contractors}
               // contractors={this.state.contractors}
               />
             }

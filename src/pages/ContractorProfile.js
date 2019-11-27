@@ -1,28 +1,22 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-
-const ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ4OTQ5MjR9.3FYd_ClS1Ixneknsl2lfQnpWBD47Jmyvr0HVUcwMYfE"
-const headers = { Authorization: `Bearer ${ACCESS_TOKEN}` }
 export default class ContractorProfile extends Component {
 
   state = { contractorInfo: [] }
 
-  fetchProfile = async () => {
-    const { match } = this.props;
-    const requests = [
-      axios.get(`http://localhost:3000/contractors/${match.params.profile}`, { headers }),
-    ];
-    const [
-      { data: contractorInfo }
-    ] = await Promise.all(requests);
-    this.setState({ contractorInfo })
-    console.log(contractorInfo)
-  }
+  headers = { Authorization: sessionStorage.getItem('AUTH_TOKEN') }
 
   componentDidMount() {
     this.fetchProfile()
   }
+
+  fetchProfile = async () => {
+    const { match } = this.props;
+    const { data } = await axios.get(`http://localhost:3000/contractors/${match.params.id}`, { headers: this.headers })
+    this.setState({ contractorInfo: data.contractor })
+  }
+
   render() {
     const { contractorInfo } = this.state
     return (

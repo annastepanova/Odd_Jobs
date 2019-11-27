@@ -4,66 +4,59 @@ import "../ContractorSideBarComponent/Contractor.css";
 import CategoryItem from "../CategoryItem/CategoryItem";
 import axios from "axios";
 
-const ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ4OTQ5MjR9.3FYd_ClS1Ixneknsl2lfQnpWBD47Jmyvr0HVUcwMYfE"
-const headers = { Authorization: `Bearer ${ACCESS_TOKEN}` }
+
 class ContractorPage extends Component {
-  state = { categories: [], contractors: [] };
+
+    state = { categories: [], contractors: [] };
+
+    headers = { Authorization: sessionStorage.getItem('AUTH_TOKEN') }
 
     componentDidMount() {
         this.fetchLayout()
     }
-    handleSortRating = event => {
-        const { contractors } = this.state
-        const sortedContractors = contractors.sort((a, b) => {
-            return b.rating - a.rating
-        })
 
+    handleSortRating = sortDirection => () => {
+        const { contractors } = this.state
+        const sortedContractors = contractors.sort((a, b) => ({
+            asc: a.avgRating > b.avgRating ? 1 : -1,
+            dsc: a.avgRating > b.avgRating ? -1 : 1,
+        }[sortDirection]))
         this.setState({ contractors: sortedContractors })
     }
+
     fetchLayout = async () => {
         const { match } = this.props;
         const requests = [
-            axios.get(`http://localhost:3000/job_categories/${match.params.id}/contractors`, { headers }),
-            axios.get('http://localhost:3000/job_categories', { headers })
+            axios.get(`http://localhost:3000/job_categories/${match.params.id}/contractors`, { headers: this.headers }),
+            axios.get('http://localhost:3000/job_categories', { headers: this.headers })
         ];
         const [
             { data: contractorsData },
             { data: categories }
         ] = await Promise.all(requests);
-        this.setState({ categories, contractors: contractorsData.contractors })
+        const parsedContractors = contractorsData.contractors.map(contractor => {
+            const avgRating = contractor.ratings.reduce((acc, rating) => acc + rating.value, 0) / contractor.ratings.length;
+            return { ...contractor, avgRating }
+        })
+        console.log('parsed', parsedContractors)
+        this.setState({ categories, contractors: parsedContractors })
     }
 
-  loadContractors = category_id => {
-    axios
-      .get(`http://localhost:3000/job_categories/${category_id}/contractors`, {
-        headers: {
-          Authorization: `Bearer ${ACCESS_TOKEN}`
-        }
-      })
-      .then(res => {
-        this.setState({ contractors: res.data.contractors });
-      });
-  };
-    loadContractors = category_id => {
-        axios
-            .get(`http://localhost:3000/job_categories/${category_id}/contractors`, {
-                headers: {
-                    Authorization: `Bearer ${ACCESS_TOKEN}`
-                }
-            })
-            .then(res => {
-                this.setState({ contractors: res.data.contractors });
-            });
+    loadContractors = async category_id => {
+        const { data } = await axios.get(`http://localhost:3000/job_categories/${category_id}/contractors`, { headers: this.headers })
+        const parsedContractors = data.contractors.map(contractor => {
+            const avgRating = contractor.ratings.reduce((acc, rating) => acc + rating.value, 0) / contractor.ratings.length;
+            return { ...contractor, avgRating }
+        })
+        this.setState({ contractors: parsedContractors })
     };
 
-    handleViewProfile = (contractorProfile) => {
+    handleViewProfile = contractorProfile => {
         const { history, match } = this.props;
-        console.log(contractorProfile)
-        history.push(`/contractors/${match.params.id}/${contractorProfile.id}`)
+        history.push(`/contractor/${contractorProfile.id}`)
     }
 
     render() {
-        console.log({ contractors_from_state: this.state.contractors })
         return (
             <div className="filter-components">
                 <ul>
@@ -75,9 +68,8 @@ class ContractorPage extends Component {
                         <ul className="rating-box">
                             <li className="rating-header">Ratings</li>
                             <div className="star">
-                                <li className="high" onClick={this.handleSortRating}>Highest Rated</li>
-                                <li className="low">Lowest Rated</li>
-
+                                <li className="high" onClick={this.handleSortRating('dsc')}>Highest Rated</li>
+                                <li className="low" onClick={this.handleSortRating('asc')}>Lowest Rated</li>
 
                             </div>
                         </ul>
@@ -111,13 +103,13 @@ class ContractorPage extends Component {
                                             <div>{contractor.address}
                                             </div>
                                             <br />
-                                            {contractor.ratings.map((value, index) => (
+                                            {contractor.ratings.map(({ review_text }) => (
                                                 <>
 
-                                                    <div>{[...Array(Math.floor(value.value)).keys()].map(i => <img src={"https://yakimaymca.org/wp-content/uploads/2018/11/Star.png"} key={`rating${i}`} className="badge" alt="starz" />)}</div>
+                                                    <div>{[...Array(Math.floor(contractor.avgRating || 0)).keys()].map(i => <img src={"https://yakimaymca.org/wp-content/uploads/2018/11/Star.png"} key={`rating${i}`} className="badge" alt="starz" />)}</div>
                                                     <br />
 
-                                                    <div>{value.review_text}</div>
+                                                    <div>{review_text}</div>
                                                     <br />
                                                     <div className="profile-btn-container">
                                                         <button
