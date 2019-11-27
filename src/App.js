@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import axios from "axios";
 import Home from "./pages/Home";
@@ -12,27 +12,31 @@ import ContractorPage from "./components/ContractorSideBarComponent/ContractorPa
 import ContractorProfile from "./pages/ContractorProfile"
 import "./App.css";
 import Calendar from "./pages/Calendar";
+import { AuthContext } from './context/AuthContext';
 
-class App extends React.Component {
+class App extends Component {
+  static contextType = AuthContext;
   state = {
     categoriesImgSelect: [],
     contractors: [],
-    categories: []
+    categories: [],
+    fetched: false,
   };
 
   componentDidMount() {
-    this.fetchCategories();
+    this.context.token && this.fetchCategories();
+  }
+
+  componentDidUpdate() {
+    const { fetched } = this.state;
+    !fetched && this.context.token && this.fetchCategories();
   }
 
   fetchCategories = async () => {
     const { data } = await axios.get("http://localhost:3000/job_categories", {
-      headers: {
-
-
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ4OTY4NDV9.Durt04Ze7FiERPB3BZcESBo4VVTvuyZDakbq6cYB5GY'
-      }
+    headers: { Authorization: this.context.token }
     });
-    this.setState({ categories: data });
+    this.setState({ categories: data, fetched: true });
   };
 
   handleClickImg = categorySelected => () => {
@@ -62,17 +66,15 @@ class App extends React.Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/results" component={SearchResults} />
-           <Route exact path="/calendar" component={Calendar} />
-            
-
+            <Route exact path="/calendar" component={Calendar} />
             <Route
               exact
-              path="/contractors/:id"
+              path="/category/:id"
               component={ContractorPage}
             />
             <Route
               exact
-              path="/contractors/:id/:profile"
+              path="/contractor/:id"
               component={ContractorProfile}
             />
 

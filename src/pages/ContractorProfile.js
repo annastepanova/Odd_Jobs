@@ -1,28 +1,27 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { AuthContext } from '../context/AuthContext';
 
-
-const ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ4ODM5OTB9.vuA6b2ig-4sMcrBaMd_s1vS17sCKU6ccEN28CzckirI"
-const headers = { Authorization: `Bearer ${ACCESS_TOKEN}` }
 export default class ContractorProfile extends Component {
+  static contextType = AuthContext;
 
-  state = { contractorInfo: [] }
+  state = { contractorInfo: [], fetched: false }
+
+  componentDidMount() {
+    this.context.token && this.fetchProfile();
+  }
+
+  componentDidUpdate() {
+    const { fetched } = this.state;
+    !fetched && this.context.token && this.fetchProfile()
+  }
 
   fetchProfile = async () => {
     const { match } = this.props;
-    const requests = [
-      axios.get(`http://localhost:3000/contractors/${match.params.profile}`, { headers }),
-    ];
-    const [
-      { data: contractorInfo }
-    ] = await Promise.all(requests);
-    this.setState({ contractorInfo })
-    console.log(contractorInfo)
+    const { data } = await axios.get(`http://localhost:3000/contractors/${match.params.id}`, { headers: { Authorization: this.context.token } })
+    this.setState({ contractorInfo: data.contractor, fetched: true })
   }
 
-  componentDidMount() {
-    this.fetchProfile()
-  }
   render() {
     const { contractorInfo } = this.state
     return (

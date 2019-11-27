@@ -1,78 +1,59 @@
-import React from "react";
+import React, { Component } from "react";
+import axios from 'axios';
 import "../map.css";
 import MapContainer from "../components/MapContainer";
-
-const accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ4OTY4NDV9.Durt04Ze7FiERPB3BZcESBo4VVTvuyZDakbq6cYB5GY"
-
-
-class SearchResults extends React.Component {
-  state = {
-    coordinates: [],
-    contractors: []
-  };
+import { AuthContext } from '../context/AuthContext';
 
 
-  fetchContractor = () => {
-    fetch('http://localhost:3000/contractors',
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`
-        }
-      })
-      .then(response => response.json())
-      .then(({ contractors }) => {
+class SearchResults extends Component {
+  static contextType = AuthContext;
 
-        this.setState({ contractors })
-      })
+  state = { coordinates: [], contractors: [], fetched: false };
 
+  componentDidMount() {
+    this.context.token && this.fetchAddress();
+  }
+
+  componentDidUpdate() {
+    const { fetched } = this.state;
+    !fetched && this.context.token && this.fetchAddress()
   }
 
   fetchAddress = async () => {
-    const contractors = await fetch('http://localhost:3000/contractors',
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`
-        }
-      })
-    const data = await contractors.json()
+    const { data: { contractors } } = await axios.get('http://localhost:3000/contractors', { headers: { Authorization: this.context.token } });
     const requests = []
-    for (let contractorIndex in data.contractors) {
-      let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${data.contractors[contractorIndex].address},FL&key=AIzaSyB1EAffcBClxJgB7TqI_FM7cuFLcvYk7-M`
-      requests.push(fetch(url))
+    for (let contractorIndex in contractors) {
+      let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${contractors[contractorIndex].address},FL&key=AIzaSyB1EAffcBClxJgB7TqI_FM7cuFLcvYk7-M`
+      requests.push(axios.get(url))
     }
     const responses = await Promise.all(requests)
-    const coordsArray = await Promise.all(responses.map(async response => (await response.json()).results[0].geometry.location))
-    console.log(coordsArray)
+    const coordsArray = responses.map(({ data }) => data.results[0].geometry.location);
     for (let coordsIndex in coordsArray) {
-      data.contractors[coordsIndex] = { ...data.contractors[coordsIndex], ...coordsArray[coordsIndex] }
+      contractors[coordsIndex] = { ...contractors[coordsIndex], ...coordsArray[coordsIndex] }
     }
-    this.setState({ contractors: data.contractors })
+    this.setState({ contractors: contractors, fetched: true })
+  }
+  constructor(props) {
+    super(props);
+    this.goBack = this.goBack.bind(this);
   }
 
-
-
-  componentDidMount() {
-    this.fetchAddress()
-
+  goBack() {
+    this.props.history.goBack();
   }
 
   render() {
     return (
-      <>
-        <div>
-        <div style={{ position: 'relative', minHeight: '500px', marginTop: '50px', marginLeft: '150px', marginRight: '150px' }}>
-          {
-            <MapContainer
-              coordinates={this.state.contractors}
-              // contractors={this.state.contractors}
-              />
-            }
-          </div>
+      <div>
 
+        <div style={{ position: 'relative', minHeight: '500px', marginTop: '50px', marginLeft: '150px', marginRight: '150px' }}>
+          <MapContainer coordinates={this.state.contractors} />
+        </div>
+        <div>
+          <button onClick={this.goBack} className="back-map">Back</button>
         </div>
 
-
-      </>
+      </div>
     )
   }
 }
