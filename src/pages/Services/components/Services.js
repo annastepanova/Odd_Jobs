@@ -23,6 +23,7 @@ class Services extends React.Component {
           <div className={styles.all_services_img}>
             {categories.map(item => (
               <div key={item.id} className={styles.Job_img}>
+
                 <img
                   onClick={this.handleImageClick(item.id)}
                   className={styles.Cada_img}
