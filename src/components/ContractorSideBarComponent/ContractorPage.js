@@ -43,7 +43,9 @@ class ContractorPage extends Component {
     }
 
     loadContractors = async category_id => {
-        const { data } = await axios.get(`http://localhost:3000/job_categories/${category_id}/contractors`, { headers: this.headers })
+        console.log(category_id)
+        const { data } = await axios.get(`http://localhost:3000//job_categories/${category_id}/contractors`, { headers: this.headers })
+        console.log(data)
         const parsedContractors = data.contractors.map(contractor => {
             const avgRating = contractor.ratings.reduce((acc, rating) => acc + rating.value, 0) / contractor.ratings.length;
             return { ...contractor, avgRating }
