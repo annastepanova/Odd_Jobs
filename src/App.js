@@ -34,7 +34,7 @@ class App extends Component {
 
   fetchCategories = async () => {
     const { data } = await axios.get("http://localhost:3000/job_categories", {
-      headers: { Authorization: this.context.token }
+    headers: { Authorization: this.context.token }
     });
     this.setState({ categories: data, fetched: true });
   };

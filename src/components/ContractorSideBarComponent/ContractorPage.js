@@ -5,7 +5,6 @@ import "../ContractorSideBarComponent/Contractor.css";
 import CategoryItem from "../CategoryItem/CategoryItem";
 import { AuthContext } from '../../context/AuthContext';
 
-
 class ContractorPage extends Component {
     static contextType = AuthContext;
 
