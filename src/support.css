@@ -1,0 +1,76 @@
+ .chatbox {
+  height: 350px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  align-content: start;
+  overflow-y: scroll;
+  border: 1px solid #979797;
+
+}
+
+.message {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  grid-column-start: 2;
+}
+
+.text {
+  grid-column-start: 1;
+}
+
+.time {
+  grid-column-start: 1;
+  display: grid;
+  grid-gap: 10px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+h2 {
+  color: #3E3E41;	
+  font-family: Arial;	
+  font-size: 18px;	
+  letter-spacing: 0.01px;	
+  line-height: 24px;
+}
+
+.input_message {
+  width: -webkit-fill-available;
+  padding: 10px;
+}
+
+.chatbox_container {
+  margin-top: 90px;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  justify-content: center;
+  margin-left: 150px;
+  margin-right: 150px;
+}
+
+.send-message-form {
+  grid-column-start: 2;
+}
+
+.contacts {
+  grid-column-start: 1;
+}
+
+.contacts h1 {
+  line-height: 50px;
+}
+
+.grey {
+  color: #3E3E41;
+  font-size: 21px;
+}
+
+.image {
+  margin-left: 100px;
+}

@@ -5,7 +5,7 @@ import CategoryItem from "../CategoryItem/CategoryItem";
 import axios from "axios";
 
 
-const ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ3OTg2MzF9.w4K_kglBkWqz9K3oNAKNNJfwPmvvD3Y6XwuErVcD6us"
+const ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ4OTY4NDV9.Durt04Ze7FiERPB3BZcESBo4VVTvuyZDakbq6cYB5GY"
 
 const headers = { Authorization: `Bearer ${ACCESS_TOKEN}` }
 class ContractorPage extends Component {
