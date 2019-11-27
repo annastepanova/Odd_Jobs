@@ -1,8 +1,10 @@
-import React, { Component, Fragment } from 'react';
+import React, { createContext, Component } from 'react';
 import axios from 'axios';
 
+export const AuthContext = createContext({});
 
-class Authentication extends Component {
+
+export class AuthContextProvider extends Component {
     state = { token: '' }
 
     componentDidMount() {
@@ -11,22 +13,16 @@ class Authentication extends Component {
 
     authenticate = async () => {
         const { data } = await axios.post('http://localhost:3000/authenticate', { email: 'example@mail.com', password: '123123123' })
-        sessionStorage.setItem('AUTH_TOKEN', `Bearer ${data.auth_token}`);
         this.setState({ token: data.auth_token })
     }
 
     render() {
         const { token } = this.state;
+        const { children } = this.props;
         return (
-            <Fragment key={token}>
-                {this.props.children}
-            </Fragment>
+            <AuthContext.Provider value={{ token }}>
+                {children}
+            </AuthContext.Provider>
         )
     }
-
-    componentWillUnmount() {
-        sessionStorage.removeItem('AUTH_TOKEN')
-    }
-}
-
-export default Authentication;
+};

@@ -1,18 +1,23 @@
 import React, { Component } from "react";
 import { withRouter, Link } from 'react-router-dom'
+import axios from "axios";
 import "../ContractorSideBarComponent/Contractor.css";
 import CategoryItem from "../CategoryItem/CategoryItem";
-import axios from "axios";
+import { AuthContext } from '../../context/AuthContext';
 
 
 class ContractorPage extends Component {
+    static contextType = AuthContext;
 
-    state = { categories: [], contractors: [] };
-
-    headers = { Authorization: sessionStorage.getItem('AUTH_TOKEN') }
+    state = { categories: [], contractors: [], fetched: false };
 
     componentDidMount() {
-        this.fetchLayout()
+        this.context.token && this.fetchLayout();
+    }
+
+    componentDidUpdate() {
+        const { fetched } = this.state;
+        !fetched && this.context.token && this.fetchLayout()
     }
 
     handleSortRating = sortDirection => () => {
@@ -27,25 +32,23 @@ class ContractorPage extends Component {
     fetchLayout = async () => {
         const { match } = this.props;
         const requests = [
-            axios.get(`http://localhost:3000/job_categories/${match.params.id}/contractors`, { headers: this.headers }),
-            axios.get('http://localhost:3000/job_categories', { headers: this.headers })
+            axios.get(`http://localhost:3000/job_categories/${match.params.id}/contractors`, { headers: { Authorization: this.context.token } }),
+            axios.get('http://localhost:3000/job_categories', { headers: { Authorization: this.context.token } })
         ];
         const [
             { data: contractorsData },
             { data: categories }
         ] = await Promise.all(requests);
+        console.log({ contractorsData, categories })
         const parsedContractors = contractorsData.contractors.map(contractor => {
             const avgRating = contractor.ratings.reduce((acc, rating) => acc + rating.value, 0) / contractor.ratings.length;
             return { ...contractor, avgRating }
         })
-        console.log('parsed', parsedContractors)
-        this.setState({ categories, contractors: parsedContractors })
+        this.setState({ categories, contractors: parsedContractors, fetched: true })
     }
 
     loadContractors = async category_id => {
-        console.log(category_id)
-        const { data } = await axios.get(`http://localhost:3000//job_categories/${category_id}/contractors`, { headers: this.headers })
-        console.log(data)
+        const { data } = await axios.get(`http://localhost:3000//job_categories/${category_id}/contractors`, { headers: { Authorization: this.context.token } })
         const parsedContractors = data.contractors.map(contractor => {
             const avgRating = contractor.ratings.reduce((acc, rating) => acc + rating.value, 0) / contractor.ratings.length;
             return { ...contractor, avgRating }
@@ -54,7 +57,7 @@ class ContractorPage extends Component {
     };
 
     handleViewProfile = contractorProfile => {
-        const { history, match } = this.props;
+        const { history } = this.props;
         history.push(`/contractor/${contractorProfile.id}`)
     }
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import axios from "axios";
 import Home from "./pages/Home";
@@ -10,30 +10,33 @@ import NavBar from "./components/NavBar";
 import SearchResults from "./pages/SearchResults";
 import ContractorPage from "./components/ContractorSideBarComponent/ContractorPage";
 import ContractorProfile from "./pages/ContractorProfile"
-import Authentication from './components/Authentication';
 import "./App.css";
 import Calendar from "./pages/Calendar";
+import { AuthContext } from './context/AuthContext';
 
-class App extends React.Component {
+class App extends Component {
+  static contextType = AuthContext;
   state = {
     categoriesImgSelect: [],
     contractors: [],
-    categories: []
+    categories: [],
+    fetched: false,
   };
 
   componentDidMount() {
-    this.fetchCategories();
+    this.context.token && this.fetchCategories();
+  }
+
+  componentDidUpdate() {
+    const { fetched } = this.state;
+    !fetched && this.context.token && this.fetchCategories();
   }
 
   fetchCategories = async () => {
     const { data } = await axios.get("http://localhost:3000/job_categories", {
-      headers: {
-
-
-        Authorization: sessionStorage.getItem('AUTH_TOKEN')
-      }
+      headers: { Authorization: this.context.token }
     });
-    this.setState({ categories: data });
+    this.setState({ categories: data, fetched: true });
   };
 
   handleClickImg = categorySelected => () => {
@@ -64,8 +67,6 @@ class App extends React.Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/results" component={SearchResults} />
             <Route exact path="/calendar" component={Calendar} />
-
-
             <Route
               exact
               path="/category/:id"

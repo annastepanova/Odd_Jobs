@@ -1,20 +1,25 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { AuthContext } from '../context/AuthContext';
 
 export default class ContractorProfile extends Component {
+  static contextType = AuthContext;
 
-  state = { contractorInfo: [] }
-
-  headers = { Authorization: sessionStorage.getItem('AUTH_TOKEN') }
+  state = { contractorInfo: [], fetched: false }
 
   componentDidMount() {
-    this.fetchProfile()
+    this.context.token && this.fetchProfile();
+  }
+
+  componentDidUpdate() {
+    const { fetched } = this.state;
+    !fetched && this.context.token && this.fetchProfile()
   }
 
   fetchProfile = async () => {
     const { match } = this.props;
-    const { data } = await axios.get(`http://localhost:3000/contractors/${match.params.id}`, { headers: this.headers })
-    this.setState({ contractorInfo: data.contractor })
+    const { data } = await axios.get(`http://localhost:3000/contractors/${match.params.id}`, { headers: { Authorization: this.context.token } })
+    this.setState({ contractorInfo: data.contractor, fetched: true })
   }
 
   render() {
