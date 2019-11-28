@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import axios from "axios";
 import Home from "./pages/Home";
-import Services from "./pages/Services/components/Services";
+import Services from "./pages/Services";
 import Support from "./pages/Support";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
