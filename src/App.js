@@ -13,6 +13,7 @@ import ContractorProfile from "./pages/ContractorProfile"
 import "./App.css";
 import Calendar from "./pages/Calendar";
 import { AuthContext } from './context/AuthContext';
+import Payment from "./pages/Payment"
 
 class App extends Component {
   static contextType = AuthContext;
@@ -67,6 +68,7 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/results" component={SearchResults} />
             <Route exact path="/calendar" component={Calendar} />
+            <Route exact path="/payment" component={Payment}/>
             <Route
               exact
               path="/category/:id"
