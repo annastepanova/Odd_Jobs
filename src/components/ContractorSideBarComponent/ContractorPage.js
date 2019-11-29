@@ -5,13 +5,13 @@ import "../ContractorSideBarComponent/Contractor.css";
 import CategoryItem from "../CategoryItem/CategoryItem";
 import { AuthContext } from '../../context/AuthContext';
 
-
 class ContractorPage extends Component {
     static contextType = AuthContext;
 
     state = { categories: [], contractors: [], fetched: false };
 
     componentDidMount() {
+        window.scrollTo(0, 0)
         this.context.token && this.fetchLayout();
     }
 

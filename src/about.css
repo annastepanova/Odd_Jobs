@@ -1,0 +1,19 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 0.3fr 200px 0.3fr 200px;
+  margin-top: 180px;
+  margin-left: 300px;
+  grid-auto-rows: 400px;
+  justify-items: center;
+  justify-self: center;
+  align-self: center;
+  grid-column-gap: 30px;
+}
+
+h1 {
+  color: #3E3E41;
+}
+
+.teammate {
+  height: 250px;
+}
