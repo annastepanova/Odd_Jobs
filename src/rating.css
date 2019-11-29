@@ -1,0 +1,43 @@
+.rating-container {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.wrap {
+position: relative;
+flex-direction: row;
+justify-content: center;
+margin-top: 20px;
+}
+
+.submit-btn {
+  height: 61px;
+  width: 182px;
+  border-radius: 8px;
+  background-color: #FF8224;
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  color: white;
+  border: 2px solid; 
+  margin-top: 30px;
+}
+
+.review {
+  height: 98px;	
+  width: 589px;	
+  border: 1px solid #979797;	
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 30px;
+  color: black;
+}
