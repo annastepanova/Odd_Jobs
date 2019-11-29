@@ -58,7 +58,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route
-              exact
+              
               path="/services"
               component={() => <Services categories={categories} />}
             />
@@ -66,7 +66,7 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/results" component={SearchResults} />
-            <Route exact path="/calendar" component={Calendar} />
+            <Route path="/calendar" component={Calendar} />
             <Route
               exact
               path="/category/:id"
