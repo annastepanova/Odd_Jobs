@@ -42,7 +42,7 @@ class ContractorPage extends Component {
         console.log({ contractorsData, categories })
         const parsedContractors = contractorsData.contractors.map(contractor => {
             const avgRating = contractor.ratings.reduce((acc, rating) => acc + rating.value, 0) / contractor.ratings.length;
-            return { ...contractor, avgRating }
+            return { ...contractor, rating: contractor.ratings[0], avgRating }
         })
         this.setState({ categories, contractors: parsedContractors, fetched: true })
     }
@@ -108,24 +108,21 @@ class ContractorPage extends Component {
                                             <div>{contractor.address}
                                             </div>
                                             <br />
-                                            {contractor.ratings.map(({ review_text }) => (
-                                                <>
+                                            <>
+                                                <div>{[...Array(Math.floor(contractor.avgRating || 0)).keys()].map(i => <img src={"https://yakimaymca.org/wp-content/uploads/2018/11/Star.png"} key={`rating${i}`} className="badge" alt="starz" />)}</div>
+                                                <br />
 
-                                                    <div>{[...Array(Math.floor(contractor.avgRating || 0)).keys()].map(i => <img src={"https://yakimaymca.org/wp-content/uploads/2018/11/Star.png"} key={`rating${i}`} className="badge" alt="starz" />)}</div>
-                                                    <br />
+                                                <div>{contractor.rating && contractor.rating.review_text}</div>
+                                                <br />
+                                                <div className="profile-btn-container">
+                                                    <button
+                                                        className="profile-btn"
+                                                        onClick={() => this.handleViewProfile(contractor)}
+                                                    >View Profile</button>
+                                                </div>
+                                                <br />
 
-                                                    <div>{review_text}</div>
-                                                    <br />
-                                                    <div className="profile-btn-container">
-                                                        <button
-                                                            className="profile-btn"
-                                                            onClick={() => this.handleViewProfile(contractor)}
-                                                        >View Profile</button>
-                                                    </div>
-                                                    <br />
-
-                                                </>
-                                            ))}
+                                            </>
 
                                         </div>
                                     </div>
