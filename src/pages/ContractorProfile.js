@@ -64,6 +64,35 @@ class ContractorProfile extends Component {
             <p>6 years work experience</p>
             <p>Project Completions (22) </p>
           </div>
+
+        ))}
+        <div className="misc-info">
+          <h4>English & Spanish</h4>
+          <p>$22/hr</p>
+        </div>
+        <div className="hire-btn-now">
+          <Link to="/calendar"><button className="hire-btn-prof">Hire Now!</button></Link>
+          <Link to={`/rating/${id}`}><button className="review-btn-prof">Leave a Review</button></Link>
+        </div>
+        <div className="name-div">
+        <p>{contractorInfo.first_name} {contractorInfo.last_name} {contractorInfo.background_check ? <img src="https://nexusipe-resource-exchange.s3.amazonaws.com/pictures/ambassador_large.png" className="badge" alt="bgcheck"></img> : ""}</p>
+        </div>
+        <div className="review-sect">
+          <h4>Reviews: </h4>
+          <br />
+        {
+          <div>
+          <p>{contractorInfo.ratings && contractorInfo.ratings.map(review => review.review_text)}</p>
+          <br/>
+          <p> - Anna S: </p>
+          </div>
+        }
+        </div>
+        <div className="misc-info-desc">
+        <p>6 years work experience</p>
+        <p>Project Completions (22) </p>
+        </div>
+
         </div>
         <div className="profile-security">
           <p className="sec-text">Always have peace of mind! We ensure to always verify: </p>
