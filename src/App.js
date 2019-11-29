@@ -71,7 +71,7 @@ class App extends Component {
             <Route exact path="/calendar" component={Calendar} />
             <Route exact path="/payment" component={Payment} />
             <Route exact path="/about" component={About} />
-            <Route exact path="/rating" component={Rating} />
+            <Route exact path="/rating/:contractorId" component={Rating} />
             <Route
               exact
               path="/category/:id"

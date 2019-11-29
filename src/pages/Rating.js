@@ -1,46 +1,30 @@
 import React, { Component } from "react";
+import axios from 'axios';
+import { AuthContext } from '../context/AuthContext';
 import StarRatingComponent from 'react-star-rating-component';
 import '../rating.css'
 
 
 class Rating extends Component {
-  constructor() {
-    super();
+  static contextType = AuthContext;
+  state = { value: 1, review_text : '' }
 
-    this.state = {
-      rating: 1,
-      message: ''
-    }
+  onStarClick = nextValue => this.setState({ value: nextValue })
+
+  handleChange = e => this.setState({ review_text: e.target.value })
+
+  handleSubmit = async e => {
+    e.preventDefault()
+    const { match, history } = this.props;
+    const { contractorId } = match.params;
+    await axios.post('http://localhost:3000/ratings', { rating: { ...this.state, contractor_id: contractorId } }, { headers: { Authorization: this.context.token } })
+    this.setState({ value: 1, review_text: '' })
+    history.push(`/contractor/${contractorId}`)
   }
-
-  onStarClick(nextValue, prevValue, name) {
-    this.setState({rating: nextValue});
-  }
-
-  handleChange(e) {
-    this.setState({
-      message: e.target.value
-    })
-  }
-
-  handleSubmit = event => {
-    event.preventDefault()
-    console.log(this.state.message)
-    this.sendMessage(this.state.message)
-    event.target.reset()
-    this.setState({ rating: 1 })
-
-  }
-
-  sendMessage = (text) => {
-      this.setState(
-        {message: text}
-      )
-      }
 
 
   render() {
-    const { rating } = this.state;
+    const { value: rating } = this.state;
 
     return (
       <div className="rating-container">
@@ -52,7 +36,7 @@ class Rating extends Component {
           name="rate1"
           starCount={5}
           value={rating}
-          onStarClick={this.onStarClick.bind(this)}
+          onStarClick={this.onStarClick}
         />
         </div>
         <form
@@ -60,7 +44,7 @@ class Rating extends Component {
         onSubmit={this.handleSubmit}>
         <input
           className="review"
-          onChange={(event) => this.handleChange(event)}
+          onChange={this.handleChange}
           ref={this.inputRef}
           placeholder="How did your contractor do?"
           type="text" />
