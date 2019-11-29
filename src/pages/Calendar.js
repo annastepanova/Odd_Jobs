@@ -2,18 +2,25 @@
 // import dayGridPlugin from "@fullcalendar/daygrid";
 import React from "react";
 import "../Home.css";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
-const Calendar = () =>
-  <div>
-    <div
-      className="calendly-inline-widget"
-      data-url="https://calendly.com/oddjob"
-      style={{ minWidth: "320px", height: "630px" }}
-    />
-  </div>
 
-export default Calendar;
+const Calendar = () => {
+  return (
+    <div style={{ height: "800px" }}>
+      <iframe
+        title="oddjob calendar"
+        src="https://calendly.com/oddjob"
+        width="100%"
+        height="100%"
+        frameborder="0"
+      ></iframe>
+    </div>
+  );
+};
+
+
+export default withRouter(Calendar);
 
 // export default function Calendar() {
 //   return (
