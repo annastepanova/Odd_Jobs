@@ -1,0 +1,101 @@
+* {
+  font-family: Arial;
+}
+
+.container {
+display: grid;
+grid-template-columns: 1fr 2fr;
+margin-left: 270px;
+margin-top: 100px;
+}
+
+.form {
+  display: grid;
+}
+
+input {
+	box-sizing: border-box;
+	height: 60px;
+	width: 489px;
+	border: 1px solid #979797;
+  border-radius: 8px;
+  color: #A0A0A0;	
+  font-family: "Hiragino Sans GB";	
+  font-size: 18px;	
+  letter-spacing: 0.01px;	
+  line-height: 27px;
+}
+
+.submit_button {	
+  height: 61px;	
+  width: 182px;	
+  border-radius: 8px;	
+  background-color: #302E98;
+}
+
+.submit {
+color: white;	
+font-size: 20px;	
+letter-spacing: 0.04px;	
+line-height: 23px;	
+text-align: center;
+font-weight: bold;
+}
+
+h1 {
+  color: #302E98;	
+  font-size: 24px;	
+  letter-spacing: 0.01px;	
+  line-height: 28px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+label {
+  color: #3E3E41;	
+  font-size: 18px;	
+  letter-spacing: 0.01px;	
+  line-height: 21px;
+  font-weight: bold;
+}
+
+.fullName {
+  margin-top: 35px;
+}
+
+.button_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 10px;
+
+}
+
+.form-group {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 15px;
+}
+
+.select-cardExpirationDate {
+  width: 150px;
+  height: 58px;
+  font-size: 18px;
+}
+
+.select-cardExpirationDate:last-of-type {
+  margin-left: 20px;
+}
+
+.cardCVC{
+  width: 150px;
+}
+
+.cardImg-group {
+display: flex;
+justify-content: space-between
+}
+
+
+.transparent {
+  opacity: 0.2;
+}

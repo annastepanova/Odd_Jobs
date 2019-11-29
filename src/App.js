@@ -13,6 +13,7 @@ import ContractorProfile from "./pages/ContractorProfile"
 import "./App.css";
 import Calendar from "./pages/Calendar";
 import { AuthContext } from './context/AuthContext';
+import Payment from "./pages/Payment"
 import About from "./pages/About"
 import Rating from "./pages/Rating"
 
@@ -36,7 +37,7 @@ class App extends Component {
 
   fetchCategories = async () => {
     const { data } = await axios.get("http://localhost:3000/job_categories", {
-    headers: { Authorization: this.context.token }
+      headers: { Authorization: this.context.token }
     });
     this.setState({ categories: data, fetched: true });
   };
@@ -60,15 +61,15 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route
-              exact
               path="/services"
               component={() => <Services categories={categories} />}
             />
-            <Route exact path="/services/support" component={Support} />
+            <Route exact path="/support" component={Support} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/results" component={SearchResults} />
             <Route exact path="/calendar" component={Calendar} />
+            <Route exact path="/payment" component={Payment} />
             <Route exact path="/about" component={About} />
             <Route exact path="/rating" component={Rating} />
             <Route

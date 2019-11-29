@@ -1,0 +1,55 @@
+.ModalDos {
+  position: fixed;
+  top: 150px;
+  left: 400px;
+  right: 400px;
+  bottom: 150px;
+  z-index: 2;
+  background-color: rgba(000, 000, 000, 0);
+  text-align: center;
+  padding: 10px;
+}
+
+.customModal{
+height: 100;
+width: 100;
+
+}
+
+.modalcss {
+display: flex;
+align-items: center;
+
+}
+
+.likecss {
+  width: 100px;
+  height: 100px;
+}
+
+.writeareviewbotton{
+background-color: orange;
+height: 50px;
+width: 30%;
+font-size: 18px;
+color: white;
+border-radius: 10px;
+border: 1px grey solid;
+
+}
+
+.closeModalcss{
+margin-left: 90%;
+width: 10%;
+height: 10%;
+color: blue;
+font-size: 20px
+}
+
+
+.modalAligment{
+display: flex;
+flex-direction: column;
+align-items: center;
+
+}
