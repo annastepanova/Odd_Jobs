@@ -84,9 +84,9 @@ class Payment extends Component {
             <br />
             <input
               placeholder="1234-5678-9012-2345"
-              name="cardNumber"
+              className="cardNumber"
               id="cardNumber"
-              type="cardNumber"
+              type="Number"
               value={this.state.cardNumber}
               onChange={event => this.handleChange(event)}
             />
@@ -137,7 +137,7 @@ class Payment extends Component {
               placeholder="123"
               className="cardCVC"
               id="cardCVC"
-              type="CardCVC"
+              type="Number"
               value={this.state.cardCVC}
               onChange={event => this.handleChange(event)}
             />
