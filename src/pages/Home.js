@@ -148,8 +148,11 @@ export default class Home extends React.Component {
           </div>
         </div>
         <footer>
-          <div>
+          <div className="footer-text">
             <p>Conditions of Use Privacy ©2019, Odd Jobs, Inc.</p>
+            <Link exact to="/about">
+            <p>Created by ODD JOBS TEAM</p>
+            </Link>
           </div>
         </footer>
       </>

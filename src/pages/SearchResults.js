@@ -23,7 +23,7 @@ class SearchResults extends Component {
     const { data: { contractors } } = await axios.get('http://localhost:3000/contractors', { headers: { Authorization: this.context.token } });
     const requests = []
     for (let contractorIndex in contractors) {
-      let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${contractors[contractorIndex].address},FL&key=AIzaSyB1EAffcBClxJgB7TqI_FM7cuFLcvYk7-M`
+      let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${contractors[contractorIndex].address},FL&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`
       requests.push(axios.get(url))
     }
     const responses = await Promise.all(requests)
