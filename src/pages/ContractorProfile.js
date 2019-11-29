@@ -25,13 +25,15 @@ export default class ContractorProfile extends Component {
   render() {
     const { contractorInfo } = this.state
     return (
+      <>
       <div>
         <h1>Contractor Profile</h1>
         <p>{contractorInfo.first_name} {contractorInfo.last_name}</p>
         <p>{contractorInfo.address}</p>
-        <p>{contractorInfo.background_check ? <img src="https://nexusipe-resource-exchange.s3.amazonaws.com/pictures/ambassador_large.png" className="badge"></img> : "Not Yet Verified"}</p>
-
+        <p>{contractorInfo.background_check ? <img src="https://nexusipe-resource-exchange.s3.amazonaws.com/pictures/ambassador_large.png" className="badge" alt="bgcheck"></img> : "Not Yet Verified"}</p>
       </div>
+      
+      </>
     )
   }
 }
