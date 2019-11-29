@@ -112,7 +112,11 @@
     line-height: 24px;
     color: #4A4A4A;
   }
-  .div7 { grid-area: 3 / 3 / 4 / 6; }
+  .review-sect { 
+    grid-area: 3 / 3 / 4 / 6; 
+    width: 400px;
+    margin-top: -100px;
+  }
   .div8 { grid-area: 4 / 3 / 5 / 4; }
   .div9 { grid-area: 4 / 4 / 5 / 5; }
   .div10 { grid-area: 4 / 5 / 5 / 6; }
