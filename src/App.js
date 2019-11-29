@@ -60,7 +60,6 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route
-
               path="/services"
               component={() => <Services categories={categories} />}
             />
