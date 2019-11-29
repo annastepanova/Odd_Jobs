@@ -4,9 +4,18 @@ import React from "react";
 import "../Home.css";
 import { withRouter } from "react-router-dom";
 
+ 
 
-const Calendar = () => {
+class Calendar extends React.Component{
+  
+  goBack = () => this.props.history.goBack();
+
+  render(){
   return (
+    <>
+    <div>
+      <button onClick={this.goBack} className="back-map">Back</button>
+    </div>
     <div style={{ height: "800px" }}>
       <iframe
         title="oddjob calendar"
@@ -16,8 +25,10 @@ const Calendar = () => {
         frameborder="0"
       ></iframe>
     </div>
+    </>
   );
 };
+}
 
 
 export default withRouter(Calendar);
