@@ -53,29 +53,28 @@ class Support extends React.Component {
 
   
   render() {
-    console.log('image', TECH_SUPPORT_IMAGE)
     
     return (
      <>
       <div className="chatbox_container">
       <div className="contacts">
        <h1>Customer Support</h1>
-       <h1 className="grey">E: support@oddjobs</h1>
+       <h1 className="grey">E: support@oddjobs.com</h1>
        <h1 className="grey">T: 1.800.555.67.80</h1>
       </div> 
       <div className="chatbox">
       <div className="time">
-      <h2>TODAY</h2>
+      <h2 className="header">TODAY</h2>
       {this.state.time.map((time, index) => {
         return(
-          <h2 key={index}>{time}</h2>
+          <h2 className="header" key={index}>{time}</h2>
       )})}
       </div>
       <div className="message">
-      <h2 className="text">Hello, How can we assist you?</h2>
+      <h2 className="text header">Hello, How can we assist you?</h2>
       {this.state.messages.map((message, index) => {
         return(
-          <h2 className="text" key={index}>{message}</h2>
+          <h2 className="text header" key={index}>{message}</h2>
       )})}
       </div>
       </div>
