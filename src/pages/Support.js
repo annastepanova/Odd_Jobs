@@ -65,7 +65,7 @@ class Support extends React.Component {
       </div> 
       <div className="chatbox">
       <div className="time">
-      <h2>TODAY</h2>
+      <h2 className="today-header">TODAY</h2>
       {this.state.time.map((time, index) => {
         return(
           <h2 key={index}>{time}</h2>
