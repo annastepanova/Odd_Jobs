@@ -44,7 +44,7 @@ class ContractorProfile extends Component {
           <img className="profile-pic" src={contractorInfo.contractor_image} alt="profilepic" />
           {contractorInfo.ratings && contractorInfo.ratings.map(rating => (
             <div className="ratingDisplay" key={contractorInfo.id}>
-              {[...Array(Math.floor(rating.value || 0)).keys()].map(i =>
+              {[...Array(Math.floor(contractorInfo.avgRating || 0)).keys()].map(i =>
                 <img src={"https://yakimaymca.org/wp-content/uploads/2018/11/Star.png"} key={`rating${i}`} className="badge" alt="starz" />
               )}
             </div>
@@ -65,7 +65,7 @@ class ContractorProfile extends Component {
             <p>Project Completions (22) </p>
           </div>
 
-        ))}
+      
         <div className="misc-info">
           <h4>English & Spanish</h4>
           <p>$22/hr</p>
@@ -84,7 +84,7 @@ class ContractorProfile extends Component {
           <div>
           <p>{contractorInfo.ratings && contractorInfo.ratings.map(review => review.review_text)}</p>
           <br/>
-          <p> - Anna S: </p>
+          <p> - Anna S </p>
           </div>
         }
         </div>
