@@ -32,7 +32,8 @@
   border-radius: 5px;
 }
 
-.today-header {
+.header {
+
   color: #3E3E41;	
   font-family: Arial;	
   font-size: 18px;	
@@ -73,4 +74,5 @@
 
 .image {
   margin-left: 100px;
+  margin-top: 150px;
 }
