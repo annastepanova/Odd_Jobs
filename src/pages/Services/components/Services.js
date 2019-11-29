@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import styles from "./services.module.css";
+import styles from "../css/services.module.css";
 
 
 class Services extends React.Component {
