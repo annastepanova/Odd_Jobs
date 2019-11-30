@@ -15,6 +15,7 @@ import Calendar from "./pages/Calendar";
 import { AuthContext } from './context/AuthContext';
 import Payment from "./pages/Payment"
 import About from "./pages/About"
+import StatusBar from "./pages/StatusBar"
 import Rating from "./pages/Rating"
 
 class App extends Component {
@@ -71,6 +72,7 @@ class App extends Component {
             <Route exact path="/calendar" component={Calendar} />
             <Route exact path="/payment" component={Payment} />
             <Route exact path="/about" component={About} />
+            <Route exact path="/statusBar" component={StatusBar} />
             <Route exact path="/rating/:contractorId" component={Rating} />
             <Route
               exact
