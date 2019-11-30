@@ -11,6 +11,11 @@
   .specProfileHeader{
     margin-left: 200px;
     margin-top: 50px;
+    color: #2E3192;
+    font-family: Arial;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 28px;
   }
   
   .profile-pic { 
@@ -19,7 +24,7 @@
   }
   .ratingDisplay { 
     grid-area: 3 / 1 / 4 / 3; 
-    margin-top: 30px;
+    margin-top: 10px;
     text-align: center;
     width: 200px
   }
@@ -30,7 +35,7 @@
     font-weight: bold;
     line-height: 23px;
     color: #4A4A4A;
-    margin-top: -20px;
+    margin-top: -70px;
     width: 200px;
     text-align: center;
   }
@@ -44,6 +49,7 @@
     color: #FFFFFF;
     display: flex;
     margin-left: -80px;
+    margin-top: -120px;
   }
 
 
@@ -58,6 +64,7 @@
     line-height: 28px;
     text-align: center;
     color: #FFFFFF;
+    margin-right: 10px;
   }
 
 
@@ -92,12 +99,23 @@
     text-align: left;
     color: #4A4A4A;
     margin-top: -70px;
-
+    display: flex;
+    flex-direction: column;
   }
 
   .profile-security {
-    margin-left: 140px;
+    margin-left: 110px;
+    width: 400px;
+    height: 200px;
+    margin-top: -50px;
   }
+
+  .secure-img {
+    display: flex;
+    justify-content: center;
+    margin-left: -30px;
+  }
+
   .sec-text {
     font-family: Arial;
     font-weight: bold;
@@ -111,9 +129,36 @@
     font-size: 14px;
     line-height: 24px;
     color: #4A4A4A;
+    margin-top: 20px;
+    margin-left: 120px;
   }
-  .div7 { grid-area: 3 / 3 / 4 / 6; }
-  .div8 { grid-area: 4 / 3 / 5 / 4; }
+
+  .project-image {
+    object-fit: contain;
+    margin-left: 10px;
+  }
+  .projectImage-list{ 
+    grid-area: 3 / 3 / 4 / 6; 
+    width: 400px;
+    margin-top: -60px;
+  }
+
+  .review-head {
+    font-family: Arial;
+    font-size: 18px;
+    line-height: 21px;
+    color: #4A4A4A;
+  }
+  .review-sect{ grid-area: 4 / 3 / 5 / 4; }
+
+  .rev-comments {
+    border-top: 1px solid #4A4A4A;
+    width: 500px;
+  }
+
+  .comment-text {
+    margin-top:30px;
+  }
   .div9 { grid-area: 4 / 4 / 5 / 5; }
   .div10 { grid-area: 4 / 5 / 5 / 6; }
   .div11 { grid-area: 5 / 3 / 6 / 6; }

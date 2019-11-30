@@ -42,7 +42,7 @@ class ContractorPage extends Component {
         console.log({ contractorsData, categories })
         const parsedContractors = contractorsData.contractors.map(contractor => {
             const avgRating = contractor.ratings.reduce((acc, rating) => acc + rating.value, 0) / contractor.ratings.length;
-            return { ...contractor, avgRating }
+            return { ...contractor, rating: contractor.ratings[0], avgRating }
         })
         this.setState({ categories, contractors: parsedContractors, fetched: true })
     }
@@ -66,7 +66,7 @@ class ContractorPage extends Component {
             <div className="filter-components">
                 <ul>
                     <li className="filter-header">Filters:</li>
-                    <Link exact to="/results"> <li className="map-filters"><img src="https://static.vecteezy.com/system/resources/previews/000/564/195/non_2x/map-pointer-icon-vector.jpg" className="map-marker-icon"></img></li></Link>
+                    <Link exact to="/results"> <li className="map-filters"><img src="https://static.vecteezy.com/system/resources/previews/000/564/195/non_2x/map-pointer-icon-vector.jpg" alt="badge" className="map-marker-icon"></img></li></Link>
                 </ul>
                 <div className="flex-box">
                     <div className="container1">
@@ -102,30 +102,27 @@ class ContractorPage extends Component {
                                             <div className="contractor-name1">
                                                 <p>{contractor.first_name} {contractor.last_name}</p>
                                                 <br />
-                                                <p className="paragraph-image">{contractor.background_check ? <img src="https://nexusipe-resource-exchange.s3.amazonaws.com/pictures/ambassador_large.png" className="badge"></img> : ""}</p>
+                                                <p className="paragraph-image">{contractor.background_check ? <img src="https://nexusipe-resource-exchange.s3.amazonaws.com/pictures/ambassador_large.png" alt="badge" className="badge"></img> : ""}</p>
                                             </div>
                                             <br />
                                             <div>{contractor.address}
                                             </div>
                                             <br />
-                                            {contractor.ratings.map(({ review_text }) => (
-                                                <>
+                                            <>
+                                                <div>{[...Array(Math.floor(contractor.avgRating || 0)).keys()].map(i => <img src={"https://yakimaymca.org/wp-content/uploads/2018/11/Star.png"} key={`rating${i}`} className="badge" alt="starz" />)}</div>
+                                                <br />
 
-                                                    <div>{[...Array(Math.floor(contractor.avgRating || 0)).keys()].map(i => <img src={"https://yakimaymca.org/wp-content/uploads/2018/11/Star.png"} key={`rating${i}`} className="badge" alt="starz" />)}</div>
-                                                    <br />
+                                                <div>{contractor.rating && contractor.rating.review_text}</div>
+                                                <br />
+                                                <div className="profile-btn-container">
+                                                    <button
+                                                        className="profile-btn"
+                                                        onClick={() => this.handleViewProfile(contractor)}
+                                                    >View Profile</button>
+                                                </div>
+                                                <br />
 
-                                                    <div>{review_text}</div>
-                                                    <br />
-                                                    <div className="profile-btn-container">
-                                                        <button
-                                                            className="profile-btn"
-                                                            onClick={() => this.handleViewProfile(contractor)}
-                                                        >View Profile</button>
-                                                    </div>
-                                                    <br />
-
-                                                </>
-                                            ))}
+                                            </>
 
                                         </div>
                                     </div>
