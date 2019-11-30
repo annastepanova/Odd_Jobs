@@ -6,10 +6,10 @@ import { withRouter } from "react-router-dom";
 
  
 
+
 class Calendar extends React.Component{
   
   goBack = () => this.props.history.goBack();
-
   render(){
   return (
     <>
@@ -22,7 +22,7 @@ class Calendar extends React.Component{
         src="https://calendly.com/oddjob"
         width="100%"
         height="100%"
-        frameborder="0"
+        frameBorder="0"
       ></iframe>
     </div>
     </>
