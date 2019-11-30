@@ -3,15 +3,17 @@ import "../Home.css";
 import { Link } from "react-router-dom";
 
 export default class Home extends React.Component {
+  
   render() {
     return (
+      
       <>
         <div className="home-div1">
           <div className="div1-header">
             <h2>The spot to connect customers with contractors.</h2>
           </div>
           <div className="home-searchForm">
-            <form action="#">
+            <form action={`/category/1`}>
               <div className="home-searchInput">
                 <input
                   type="text"
