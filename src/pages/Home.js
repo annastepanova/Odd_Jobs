@@ -39,22 +39,22 @@ export default class Home extends React.Component {
           </div>
           <div className="category-list">
             <div className="category1">
-              <img src="cleaning tile.png" alt="cleaning" />
+              <img src="https://leo.nyc3.digitaloceanspaces.com/oddjobs/cleaning tile.png" alt="cleaning" />
             </div>
             <div className="category2">
-              <img src="home_repairs_tile.png" alt="repairs" />
+              <img src="https://leo.nyc3.digitaloceanspaces.com/oddjobs/home_repairs_tile.png" alt="repairs" />
             </div>
             <div className="category3">
-              <img src="moving_tile.png" alt="moving" />
+              <img src="https://leo.nyc3.digitaloceanspaces.com/oddjobs/moving_tile.png" alt="moving" />
             </div>
             <div className="category4">
-              <img src="house_painting_tile.png" alt="painting" />
+              <img src="https://leo.nyc3.digitaloceanspaces.com/oddjobs/house_painting_tile.png" alt="painting" />
             </div>
             <div className="category5">
-              <img src="Electrical_tile.png" alt="electrical" />
+              <img src="https://leo.nyc3.digitaloceanspaces.com/oddjobs/Electrical_tile.png" alt="electrical" />
             </div>
             <div className="category6">
-              <img src="plumbing_tile.png" alt="plumbing" />
+              <img src="https://leo.nyc3.digitaloceanspaces.com/oddjobs/plumbing_tile.png" alt="plumbing" />
             </div>
           </div>
         </div>
