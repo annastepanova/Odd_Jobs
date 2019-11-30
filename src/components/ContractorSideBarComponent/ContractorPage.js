@@ -109,7 +109,7 @@ class ContractorPage extends Component {
                                             </div>
                                             <br />
                                             <>
-                                                <div>{[...Array(Math.floor(contractor.avgRating || 0)).keys()].map(i => <img src={"https://yakimaymca.org/wp-content/uploads/2018/11/Star.png"} key={`rating${i}`} className="badge" alt="starz" />)}</div>
+                                                <div>{[...Array(Math.floor(contractor.avgRating || 0)).keys()].map(i => <img src={"https://yakimaymca.org/wp-content/uploads/2018/11/Star.png"} key={`rating${i}`} className="badge commentRating" alt="starz" />)}</div>
                                                 <br />
 
                                                 <div>{contractor.rating && contractor.rating.review_text}</div>
