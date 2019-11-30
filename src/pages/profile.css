@@ -1,163 +1,133 @@
+.profile-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .profile-main {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-  margin-left: 200px;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin-top: 40px;
+  text-align: center;
+  height: 100vh;
+}
+
+.profile-section2 {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+
+.profile-img {
+  object-fit: contain;
+  border-radius: 50%;
+  margin-top: 20px;
+}
+
+.btn-list {
+  display: flex;
+  margin-left: -30px;
   margin-top: 50px;
-  }
-
-  .specProfileHeader{
-    margin-left: 200px;
-    margin-top: 50px;
-    color: #2E3192;
+}
+.hire-now-btn {
+  height: 61px;
+    width: 182px;
+    border-radius: 8px;
+    background-color: #302E98;
+    color: #FFFFFF;
     font-family: Arial;
-    font-size: 24px;
     font-weight: bold;
-    line-height: 28px;
-  }
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.review-btn {
+  height: 61px;
+    width: 182px;
+    border-radius: 8px;
+    background-color: #302E98;
+    color: #FFFFFF;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    margin-left: 10px;
+}
+
+.secure-badge {
+  object-fit: contain;
+  margin-top: 40px;
+}
+
+.security-desc {
+  margin-top: 50px;
+  height: 50vh;
+}
+
+.ratingDisplay {
+  margin-top: 20px;
   
-  .profile-pic { 
-    grid-area: 1 / 1 / 3 / 3; 
-    border-radius: 50%;
-  }
-  .ratingDisplay { 
-    grid-area: 3 / 1 / 4 / 3; 
-    text-align: center;
-    width: 200px
-  }
-  .misc-info { 
-    grid-area: 4 / 1 / 5 / 3; 
-    font-size: 20px;
-    font-family: Arial;
-    font-weight: bold;
-    line-height: 23px;
-    color: #4A4A4A;
-    margin-top: -70px;
-    width: 200px;
-    text-align: center;
-  }
-  .hire-btn-now { 
-    grid-area: 5 / 1 / 6 / 3; 
-    border-radius: 8px;
-    font-family: Arial;
-    font-size: 20px;
-    line-height: 28px;
-    text-align: center;
-    color: #FFFFFF;
-    display: flex;
-    margin-left: -80px;
-    margin-top: -120px;
-  }
+}
 
+.profile-desc{
+  margin-top: 20px;
+  line-height: 30px;
+}
 
-
-  .hire-btn-prof {
-    width: 182px;
-    height: 61px;
-    background-color: #302E98;
-    border-radius: 8px;
-    font-family: Arial;
-    font-size: 20px;
-    line-height: 28px;
-    text-align: center;
-    color: #FFFFFF;
-    margin-right: 10px;
-  }
-
-
-  .review-btn-prof {
-    width: 182px;
-    height: 61px;
-    background-color: #302E98;
-    border-radius: 8px;
-    font-family: Arial;
-    font-size: 20px;
-    line-height: 28px;
-    text-align: center;
-    color: #FFFFFF;
-  }
-
-
-  .name-div { 
-    grid-area: 1 / 3 / 2 / 6;
-    font-family: Arial;
+.profileName {
+  font-family: Arial;
     font-weight: bold;
     font-size: 18px;
     line-height: 21px;
     text-align: left;
     color: #302E98;
-    display: flex;
-  }
-  .misc-info-desc { 
-    grid-area: 2 / 3 / 3 / 6; 
-    font-family: Arial;
-    font-size: 18px;
-    line-height: 21px;
-    text-align: left;
-    color: #4A4A4A;
-    margin-top: -70px;
-    display: flex;
-    flex-direction: column;
-  }
+}
 
-  .profile-security {
-    margin-left: 110px;
-    width: 400px;
-    height: 50vh;
-    margin-top: -140px;
-  }
+.misc-info {
+  line-height: 30px;
+}
 
-  .secure-img {
-    display: flex;
-    justify-content: center;
-    margin-left: -30px;
-  }
+.review-section {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #302E98;
+  font-family: Arial;
+  border-bottom: 1px solid #302E98;
+  height: 40px;
+}
 
-  .sec-text {
-    font-family: Arial;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 18px;
-    color: #4A4A4A;
-  }
-  .list-items-profile {
-    list-style-type: circle;
-    font-family: Arial;
-    font-size: 14px;
-    line-height: 24px;
-    color: #4A4A4A;
-    margin-top: 20px;
-    margin-left: 120px;
-  }
+.userReview {
+  margin-top: 10px;
+  border-radius: 8px;
+  width: 500px;
+  height: 80px;
+  color: #4A4A4A;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 500px;
+  height: 80px;
+  line-height: 35px;
+}
 
-  .project-image {
-    object-fit: contain;
-    margin-left: 10px;
-  }
-  .projectImage-list{ 
-    grid-area: 3 / 3 / 4 / 6; 
-    width: 400px;
-    margin-top: -60px;
-  }
+.list-secure {
+  text-align: left;
+  list-style-type: circle;
+  margin-left: 80px;
+  margin-top: 20px;
+  line-height: 40px;
+}
 
-  .review-head {
-    font-family: Arial;
-    font-size: 18px;
-    line-height: 21px;
-    color: #4A4A4A;
-  }
-  .review-sect{ grid-area: 4 / 3 / 5 / 4; }
+.list-secure li{
+  list-style-type: circle;
+}
 
-  .rev-comments {
-    border-top: 1px solid #4A4A4A;
-    width: 500px;
-  }
-
-  .comment-text {
-    margin-top:30px;
-  }
-  .div9 { grid-area: 4 / 4 / 5 / 5; }
-  .div10 { grid-area: 4 / 5 / 5 / 6; }
-  .div11 { grid-area: 5 / 3 / 6 / 6; }
+.specProfileHeader {
+  color: #302E98;
+  font-family: Arial;
+  font-size: 24px;
+  line-height: 28px;
+  margin-bottom: 20px;
+}
+.commentRating {
+  margin-left: 10px;
+}

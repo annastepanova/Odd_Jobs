@@ -34,80 +34,65 @@ class ContractorProfile extends Component {
     const { id } = match.params
     return (
       <>
+      <div>
+        <button onClick={this.goBack} className="back-map">Back</button>
+      </div>
+      <div className="profile-container">
+        <div className="profile-main">
         <div>
-          <button onClick={this.goBack} className="back-map">Back</button>
-        </div>
-        <div>
-          <h2 className="specProfileHeader">Contractor Profile</h2>
-        </div>
-        <div className='profile-main'>
-          <img className="profile-pic" src={contractorInfo.contractor_image} alt="profilepic" />
+        <h2 className="specProfileHeader">Contractor Profile</h2>
+      </div>
+          <div>
+          <img className="profile-img" src={contractorInfo.contractor_image} alt="profile-pic" />
+          </div>
           {contractorInfo.ratings && contractorInfo.ratings.map(rating => (
             <div className="ratingDisplay" key={contractorInfo.id}>
               {[...Array(Math.floor(contractorInfo.avgRating || 0)).keys()].map(i =>
-                <img src={"https://yakimaymca.org/wp-content/uploads/2018/11/Star.png"} key={`rating${i}`} className="badge" alt="starz" />
+                <img src={"https://yakimaymca.org/wp-content/uploads/2018/11/Star.png"} key={`rating${i}`} className="badge commentRating" alt="starz" />
               )}
             </div>
-          ))}
+          ))[0]}
+        <div className="profile-desc">
+        <h4>English & Spanish</h4>
+        <p>$22/hr</p>
+        </div>
+        <div className="btn-list">
+        <Link to="/calendar"><button className="hire-now-btn">Hire Now!</button></Link>
+        <Link to={`/rating/${id}`}><button className="review-btn">Leave a Review</button></Link>
+        </div>
+        <div className="security-desc">
+        <p>Always have a peace of mind! We ensure to always verify:</p>
+        <img className="secure-badge" src="https://leo.nyc3.digitaloceanspaces.com/oddjobs/Group17.png" alt="secureimage" />
+        <ul className="list-secure">
+          <li>Background Checks</li>
+          <li>ID Checks</li>
+          <li>Secure Payments</li>
+        </ul>
+        </div>
+        </div>
+        <div className="profile-section2">
+          <p className="profileName">{contractorInfo.first_name} {contractorInfo.last_name} {contractorInfo.background_check ? <img src="https://nexusipe-resource-exchange.s3.amazonaws.com/pictures/ambassador_large.png" className="badge" alt="bgcheck"></img> : ""}</p>
           <div className="misc-info">
-            <h4>English & Spanish</h4>
-            <p>$22/hr</p>
+          <p>6 years work experience</p>
+          <p>Project Completions (22) </p>
+          <i class="fal fa-images"></i>
           </div>
-          <div className="hire-btn-now">
-            <Link to="/calendar"><button className="hire-btn-prof">Hire Now!</button></Link>
-            <Link to={`/rating/${id}`}><button className="review-btn-prof">Leave a Review</button></Link>
+          <div className="projectImage-list">
+            <img className="project-image" src="https://leo.nyc3.digitaloceanspaces.com/oddjobs/Group9.png" alt='project-before/after' />
+            <img className="project-image" src="https://leo.nyc3.digitaloceanspaces.com/oddjobs/Group8.png" alt='project-before/after' />
           </div>
-          <div className="name-div">
-            <p>{contractorInfo.first_name} {contractorInfo.last_name} {contractorInfo.background_check ? <img src="https://nexusipe-resource-exchange.s3.amazonaws.com/pictures/ambassador_large.png" className="badge" alt="bgcheck"></img> : ""}</p>
+          <div className="review-section">
+            <h4>Reviews:</h4>
           </div>
-          <div className="misc-info-desc">
-            <p>6 years work experience</p>
-            <p>Project Completions (22) </p>
-            <br/>
-            <i class="fal fa-images"></i>
-          </div>
-
+          {contractorInfo.ratings && contractorInfo.ratings.map(review => (
+            <div className="userReview">
       
-        <div className="misc-info">
-          <h4>English & Spanish</h4>
-          <p>$22/hr</p>
+            {[...Array(Math.floor(review.value || 0)).keys()].map(i => <img src={"https://yakimaymca.org/wp-content/uploads/2018/11/Star.png"} key={`rating${i}`} className="badge commentRating" alt="starz" />)}
+            <p className="commentRating">{review.review_text}</p>
+            </div>
+          ))}
         </div>
-        <div className="hire-btn-now">
-          <Link to="/calendar"><button className="hire-btn-prof">Hire Now!</button></Link>
-          <Link to={`/rating/${id}`}><button className="review-btn-prof">Leave a Review</button></Link>
-        </div>
-        <div className="name-div">
-        <p>{contractorInfo.first_name} {contractorInfo.last_name} {contractorInfo.background_check ? <img src="https://nexusipe-resource-exchange.s3.amazonaws.com/pictures/ambassador_large.png" className="badge" alt="bgcheck"></img> : ""}</p>
-        </div>
-        <div className="review-sect">
-          <h4 className="review-head">Reviews: </h4>
-          <br />
-        {
-          <div className="rev-comments">
-          <p className='comment-text'>{contractorInfo.ratings && contractorInfo.ratings.map(review => review.review_text)}</p>
-          <br/>
-          </div>
-        }
-        </div>
-        <div className="misc-info-desc">
-        <p>6 years work experience</p>
-        <p>Project Completions (22) </p>
-        </div>
-        <div className="projectImage-list">
-          <img className="project-image" src="https://leo.nyc3.digitaloceanspaces.com/oddjobs/Group9.png" alt='project-before/after'/>
-          <img className="project-image" src="https://leo.nyc3.digitaloceanspaces.com/oddjobs/Group8.png" alt='project-before/after'/>
-        </div>
-        </div>
-        <div className="profile-security">
-          <p className="sec-text">Always have peace of mind! We ensure to always verify: </p>
-          <br />
-          <div className="secure-img">
-            <img src="https://leo.nyc3.digitaloceanspaces.com/oddjobs/Group17.png" alt="secureimage"/>
-          </div>
-            <li className="list-items-profile">Background Checks</li>
-            <li className="list-items-profile">ID Checks</li>
-            <li className="list-items-profile">Secure Payments</li>
-        </div>
+      </div>
       </>
     )
   }
