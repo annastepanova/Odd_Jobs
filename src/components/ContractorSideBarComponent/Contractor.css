@@ -130,6 +130,12 @@
     line-height: 21px;
    
   }
+  .profile-btn:hover {
+    background-color: #FF8224;
+    cursor: pointer;
+
+  }
+  
   .badge {
       height: 20px;
       width: 20px;
@@ -159,4 +165,8 @@
     margin-left: 147px;
     margin-top: 10px;
 
+}
+.back-map:hover {
+   background-color: #FF8224;
+   cursor: pointer;
 }
