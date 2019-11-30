@@ -41,6 +41,11 @@
     line-height: 21px;
 }
 
+.hire-now-btn:hover {
+  background-color: #FF8224;
+  cursor: pointer;
+}
+
 .review-btn {
   height: 61px;
     width: 182px;
@@ -52,6 +57,10 @@
     font-size: 18px;
     line-height: 21px;
     margin-left: 10px;
+}
+.review-btn:hover {
+  background-color: #FF8224;
+  cursor: pointer;
 }
 
 .secure-badge {
