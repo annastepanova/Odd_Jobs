@@ -86,7 +86,6 @@ class ContractorProfile extends Component {
           <div className="rev-comments">
           <p className='comment-text'>{contractorInfo.ratings && contractorInfo.ratings.map(review => review.review_text)}</p>
           <br/>
-          <p> - Anna S </p>
           </div>
         }
         </div>
@@ -105,9 +104,9 @@ class ContractorProfile extends Component {
           <div className="secure-img">
             <img src="https://leo.nyc3.digitaloceanspaces.com/oddjobs/Group17.png" alt="secureimage"/>
           </div>
-          <li className="list-items-profile">Background Checks</li>
-          <li className="list-items-profile">ID Checks</li>
-          <li className="list-items-profile">Secure Payments</li>
+            <li className="list-items-profile">Background Checks</li>
+            <li className="list-items-profile">ID Checks</li>
+            <li className="list-items-profile">Secure Payments</li>
         </div>
       </>
     )
