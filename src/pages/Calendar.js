@@ -13,6 +13,7 @@ class Calendar extends React.Component{
   render(){
   return (
     <>
+    {console.log(this.props)}
     <div>
       <button onClick={this.goBack} className="back-map">Back</button>
     </div>
