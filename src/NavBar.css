@@ -59,6 +59,11 @@
   margin-top: 20px;
 }
 
+.hire-button:hover {
+  background-color: #FF8224;
+  cursor: pointer;
+}
+
 
 
 
@@ -66,6 +71,9 @@
 a {
   text-decoration: none;
   color:#302E98
+}
+a:focus{
+  color: #FF8224
 }
 
 li {
