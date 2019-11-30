@@ -66,7 +66,7 @@ class ContractorPage extends Component {
             <div className="filter-components">
                 <ul>
                     <li className="filter-header">Filters:</li>
-                    <Link exact to="/results"> <li className="map-filters"><img src="https://static.vecteezy.com/system/resources/previews/000/564/195/non_2x/map-pointer-icon-vector.jpg" className="map-marker-icon"></img></li></Link>
+                    <Link exact to="/results"> <li className="map-filters"><img src="https://static.vecteezy.com/system/resources/previews/000/564/195/non_2x/map-pointer-icon-vector.jpg" alt="badge" className="map-marker-icon"></img></li></Link>
                 </ul>
                 <div className="flex-box">
                     <div className="container1">
@@ -102,7 +102,7 @@ class ContractorPage extends Component {
                                             <div className="contractor-name1">
                                                 <p>{contractor.first_name} {contractor.last_name}</p>
                                                 <br />
-                                                <p className="paragraph-image">{contractor.background_check ? <img src="https://nexusipe-resource-exchange.s3.amazonaws.com/pictures/ambassador_large.png" className="badge"></img> : ""}</p>
+                                                <p className="paragraph-image">{contractor.background_check ? <img src="https://nexusipe-resource-exchange.s3.amazonaws.com/pictures/ambassador_large.png" alt="badge" className="badge"></img> : ""}</p>
                                             </div>
                                             <br />
                                             <div>{contractor.address}
