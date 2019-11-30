@@ -15,6 +15,7 @@ import Calendar from "./pages/Calendar";
 import { AuthContext } from './context/AuthContext';
 import Payment from "./pages/Payment"
 import About from "./pages/About"
+import StatusBar from "./pages/StatusBar"
 
 class App extends Component {
   static contextType = AuthContext;
@@ -70,6 +71,7 @@ class App extends Component {
             <Route exact path="/calendar" component={Calendar} />
             <Route exact path="/payment" component={Payment} />
             <Route exact path="/about" component={About} />
+            <Route exact path="/statusBar" component={StatusBar} />
             <Route
               exact
               path="/category/:id"

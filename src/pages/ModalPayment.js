@@ -1,5 +1,4 @@
 import React from 'react'
-import customModal from './customModal.css'
 
 const ModalPayment = props => {
     return(

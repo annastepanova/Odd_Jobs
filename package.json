@@ -6,14 +6,17 @@
     "@fullcalendar/core": "^4.3.1",
     "@fullcalendar/daygrid": "^4.3.0",
     "@fullcalendar/react": "^4.3.0",
+    "@material-ui/core": "^4.7.0",
     "axios": "^0.19.0",
     "dotenv": "^8.2.0",
     "google-maps-react": "^2.0.2",
+    "material-ui": "^0.20.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-modal": "^3.11.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
+    "react-star-rating-component": "^1.4.1",
     "react-stripe-elements": "^6.0.1"
   },
   "scripts": {
