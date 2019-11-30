@@ -58,7 +58,7 @@ class Support extends React.Component {
      <>
       <div className="chatbox_container">
       <div className="contacts">
-       <h1>Customer Support</h1>
+       <h1 className="support-header">Customer Support</h1>
        <h1 className="grey">E: support@oddjobs.com</h1>
        <h1 className="grey">T: 1.800.555.67.80</h1>
       </div> 
