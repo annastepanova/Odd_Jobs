@@ -17,7 +17,7 @@ class Rating extends Component {
     e.preventDefault()
     const { match, history } = this.props;
     const { contractorId } = match.params;
-    await axios.post('http://localhost:3000/ratings', { rating: { ...this.state, contractor_id: contractorId } }, { headers: { Authorization: this.context.token } })
+    await axios.post('https://oddjobs-api.herokuapp.com/ratings', { rating: { ...this.state, contractor_id: contractorId } }, { headers: { Authorization: this.context.token } })
     this.setState({ value: 1, review_text: '' })
     history.push(`/contractor/${contractorId}`)
   }
