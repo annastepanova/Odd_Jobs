@@ -21,7 +21,7 @@ class ContractorProfile extends Component {
 
   fetchProfile = async () => {
     const { match } = this.props;
-    const { data } = await axios.get(`http://localhost:3000/contractors/${match.params.id}`, { headers: { Authorization: this.context.token } })
+    const { data } = await axios.get(`https://oddjobs-api.herokuapp.com/contractors/${match.params.id}`, { headers: { Authorization: this.context.token } })
     const avgRating = data.contractor.ratings.reduce((acc, rating) => acc + rating.value, 0) / data.contractor.ratings.length;
     this.setState({ contractorInfo: { ...data.contractor, avgRating }, fetched: true })
   }

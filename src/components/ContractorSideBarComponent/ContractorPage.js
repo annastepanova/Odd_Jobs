@@ -32,8 +32,8 @@ class ContractorPage extends Component {
     fetchLayout = async () => {
         const { match } = this.props;
         const requests = [
-            axios.get(`http://localhost:3000/job_categories/${match.params.id}/contractors`, { headers: { Authorization: this.context.token } }),
-            axios.get('http://localhost:3000/job_categories', { headers: { Authorization: this.context.token } })
+            axios.get(`https://oddjobs-api.herokuapp.com/job_categories/${match.params.id}/contractors`, { headers: { Authorization: this.context.token } }),
+            axios.get('https://oddjobs-api.herokuapp.com/job_categories', { headers: { Authorization: this.context.token } })
         ];
         const [
             { data: contractorsData },
@@ -48,7 +48,7 @@ class ContractorPage extends Component {
     }
 
     loadContractors = async category_id => {
-        const { data } = await axios.get(`http://localhost:3000//job_categories/${category_id}/contractors`, { headers: { Authorization: this.context.token } })
+        const { data } = await axios.get(`https://oddjobs-api.herokuapp.com//job_categories/${category_id}/contractors`, { headers: { Authorization: this.context.token } })
         const parsedContractors = data.contractors.map(contractor => {
             const avgRating = contractor.ratings.reduce((acc, rating) => acc + rating.value, 0) / contractor.ratings.length;
             return { ...contractor, avgRating }

@@ -20,7 +20,7 @@ class SearchResults extends Component {
   }
 
   fetchAddress = async () => {
-    const { data: { contractors } } = await axios.get('http://localhost:3000/contractors', { headers: { Authorization: this.context.token } });
+    const { data: { contractors } } = await axios.get('https://oddjobs-api.herokuapp.com/contractors', { headers: { Authorization: this.context.token } });
     const requests = []
     for (let contractorIndex in contractors) {
       let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${contractors[contractorIndex].address},FL&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`

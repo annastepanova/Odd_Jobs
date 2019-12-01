@@ -12,7 +12,7 @@ export class AuthContextProvider extends Component {
     }
 
     authenticate = async () => {
-        const { data } = await axios.post('http://localhost:3000/authenticate', { email: 'example@mail.com', password: '123123123' })
+        const { data } = await axios.post('https://oddjobs-api.herokuapp.com/authenticate', { email: 'example@mail.com', password: '123123123' })
         this.setState({ token: data.auth_token })
     }
 

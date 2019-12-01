@@ -37,7 +37,7 @@ class App extends Component {
   }
 
   fetchCategories = async () => {
-    const { data } = await axios.get("http://localhost:3000/job_categories", {
+    const { data } = await axios.get("https://oddjobs-api.herokuapp.com/job_categories", {
       headers: { Authorization: this.context.token }
     });
     this.setState({ categories: data, fetched: true });
